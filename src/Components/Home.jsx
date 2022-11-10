@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <Box>
       <Navbar />
-      <Box>HomePage</Box>
+      <Box id="homePage">HomePage</Box>
       <Footer />
     </Box>
   )

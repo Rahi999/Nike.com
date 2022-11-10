@@ -26,7 +26,7 @@
     border-radius: 50%;
     transition: all 1s;
     z-index: 4;
-    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4); */
   }
     /* // box-shadow: 0 0 25px 0 crimson; */
     .search:hover {
@@ -203,6 +203,7 @@
   display: flex;
   height: 100px;
   width: 100%;
+ 
 }
 #secondDiv{
   width: 40%;
@@ -476,8 +477,177 @@
     z-index: 0;
   }
 }
+#kidsImage{
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 5px;
+  cursor: pointer;
+}
 
+#h3{
+  text-align: center;
+  font-size: 25px;
+  font-style: italic;
+  margin-top: 10px;
+}
+#h1{
+  text-align: center;
+  font-size: 85px;
+  font-weight: bold;
+  font-style: italic;
+}
+#shopButton{
+  background-color: black;
+  color: white;
+  padding: 15px;
+  border-radius: 25px;
+  font-size: 22px;
+  margin-left: 15px;
+  margin-top: 30px;
+  cursor: pointer;
 
+}
+#categoryBox{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  height: 420px;
+  text-align: center;
+}
+#category1,#category2,#category3{
+  height: 100%;
+  width: 95%;
+}
+#category1 {
+  background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/w_300,c_limit/bda0ad1d-41ce-4362-a5b8-69bb30622168/image.jpg");
+}
+#category2 {
+  background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/w_300,c_limit/44f3d17c-3084-4bbf-ac1d-3edd84b07942/image.jpg");
+}
+#category3 {
+  background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/w_300,c_limit/c66935da-2674-4a59-9e4a-14c4f0b136cf/image.jpg");
+}
+#divButton{
+  background-color: black;
+  color: white;
+  padding: 15px;
+  border-radius: 25px;
+  font-size: 22px;
+  margin-left: 15px;
+  margin-top: 30px;
+  cursor: pointer;
+  margin-top: 70%;
+}
+#divButton2{
+  background-color: white;
+  color: black;
+  padding: 15px;
+  border-radius: 25px;
+  font-size: 22px;
+  margin-left: 15px;
+  margin-top: 30px;
+  cursor: pointer;
+  border: 0px;
+}
+#divButton3{
+  background-color: black;
+  color: white;
+  padding: 15px;
+  border-radius: 25px;
+  font-size: 22px;
+  margin-left: 15px;
+  cursor: pointer;
+  border: 0px;
+  margin-top: 70%;
+}
+#categoryBox2{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  height: 500px;
+  text-align: left;
+
+  
+}
+#category12,#category22{
+  height: 100%;
+  width: 95%;
+  padding: 20px;
+}
+#category12 {
+  background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/w_484,c_limit/d8eb53f9-4ec9-45c1-9dac-0152cbf73f7a/nike-just-do-it.jpg");
+}
+#category22 {
+  background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/w_484,c_limit/4fe66bea-ddfa-4527-831e-bb61a093782e/nike-just-do-it.jpg");
+}
+#firsttitle{
+  color:white;
+  font-size: 25px;
+  text-align: left;
+  font-style: italic;
+  margin-top: 63%;
+}
+#secondtitle{
+  color:white;
+  font-size: 35px;
+  text-align: left;
+  font-style: italic;
+}
+#category13{
+  height: 100%;
+  width: 95%;
+  padding: 20px;
+ background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/h_700,c_limit/1bb228fb-e295-4bb0-8b07-536f3e983f41/nike-just-do-it.png");
+}
+#category23{
+  height: 100%;
+  width: 95%;
+  padding: 20px;
+ background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/h_700,c_limit/4bf65f60-3bfb-47a6-9139-32645be96403/nike-just-do-it.png");
+
+}
+/*---------------------- Carousal CSS  -------------------------- */
+
+  
+
+/*---------------------- Carousal CSS ----------------------------*/
+
+#category14{
+  height: 100%;
+  width: 95%;
+  padding: 20px;
+  background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/w_322,c_limit/cb91797a-6054-4201-8bee-c08700c83e47/nike-just-do-it.png");
+}
+#category24{
+  height: 100%;
+  width: 95%;
+  padding: 20px;
+  background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/w_322,c_limit/b47f5049-1b86-4642-b50c-310ce59b5940/nike-just-do-it.png");
+}
+#category34{
+  height: 100%;
+  width: 95%;
+  padding: 20px;
+  background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/w_322,c_limit/44c84aa3-702f-49fd-80e0-a74258b9b0b6/nike-just-do-it.png");
+}
+
+#linkBox{
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+}
+#child{
+  height: 300px;
+  display: flex;
+  justify-content: space-evenly;
+}
+#subchild{
+  text-align: left;
+}
+#bottomLink{
+  color: grey;
+  font-size: 22px;
+  display: block;
+  text-decoration: none;
+}
 @media  screen and (max-width: 600px) {
    #navabrContainer{
       display: block;
@@ -522,5 +692,54 @@
     text-align: left;
     padding: 10px;
   }
+  #kidsImage{
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+  }
+  #h3{
+    font-size: 22px;
+  }
+  #h1{
+    font-size: 30px;
+  }
+  #categoryBox{
+    grid-template-columns: repeat(1,1fr);
+    height: 930px;
+
+  }
+  #categoryBox2{
+    grid-template-columns: repeat(1,1fr);
+    width: 300px;
+    height: 930px;
+
+  }
+  #category1,#category2,#category3{
+    height: 300px;
+    width: 300px;
+
+  }
+  #category12,#category220,#category13,#category14,#category14,#category24,#category34{
+    height: 300px;
+    width: 100%;
+  }
   
+  #divButton{
+    margin-top: 75%;
+  }
+  #divButton3{
+    margin-top: 55%;
+  }
+  #firsttitle{
+   margin-top: 20%;
+  }
+  body{
+    width: 90%;
+  }
+  #linkBox{
+    grid-template-columns: repeat(1,1fr);
+  }
+  #bottomLink{
+    font-size: 17px;
+  }
 }

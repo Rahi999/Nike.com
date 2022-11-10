@@ -7,7 +7,7 @@ const Navbar = () => {
 
   const [text,setText] = useState("");
 
-  return ( <Box>
+  return ( <Box id="navbar">
     <Box id="navabrContainer" columns={{sm:1,md:2,lg:2,xl:2,base:1}} >
       <Box id="firstDiv" >
         <img width='20%' src="https://media.designrush.com/inspiration_images/134805/conversions/_1512076803_93_Nike-preview.jpg" alt="Logo.." />
@@ -69,7 +69,7 @@ const Navbar = () => {
         
 
         </Box>
-        
+       
         <Button style={{width:"10%",}}><img  width="100%" src="https://www.shareicon.net/data/256x256/2016/09/14/829028_package_512x512.png" alt="" /></Button>
       </Box>
     </Box>

@@ -6,6 +6,13 @@ import SignUp from "./SignUp";
 import Login from "./Login";
 import Navbar from "./Navbar";
 import Footer from './Footer';
+import MenClothing from "./MenClothing";
+import WomenClothing from './WomenClothing';
+import MenShoes from './MenShoes';
+import WomenShoes from './WomenShoes';
+import KidsShoes from './KidsShoes';
+import Cart from './Cart';
+import SingleProduct from './SingleProduct';
 
 const AllRoutes = () => {
   return (
@@ -16,6 +23,13 @@ const AllRoutes = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/navbar" element={<Navbar />} />
             <Route path="/footer" element={<Footer />} />
+            <Route path="/menClothing" element={<MenClothing />} />
+            <Route path="/menShoes" element={<MenShoes />} />
+            <Route path="/womenClothing" element={<WomenClothing />} />
+            <Route path="/womenShoes" element={<WomenShoes />} />
+            <Route path="/kidsShos" element={<KidsShoes />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/product/:id" element={<SingleProduct />} />
         </Routes>
     </Box>
   )

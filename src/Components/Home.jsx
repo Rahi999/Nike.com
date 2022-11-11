@@ -101,7 +101,9 @@ const Home = () => {
                 <Carousal />
                 
         {/* ----------------------- */}
-        <Box>
+        <Box style={{
+          marginTop:"50px"
+        }}>
           <Typography id="h3" style={{textAlign:"left",fontSize:"30px"}}>More Nike</Typography>
           <Box id="categoryBox">
             <Box id="category14"><Link to="/menClothing"><button id="divButton3">Men's</button></Link></Box>

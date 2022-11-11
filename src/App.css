@@ -20,8 +20,8 @@
     right: 0;
     bottom: 0;
     left: 0;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     background: crimson;
     border-radius: 50%;
     transition: all 1s;
@@ -549,8 +549,8 @@
   border: 0px;
 }
 #divButton3{
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 15px;
   border-radius: 25px;
   font-size: 22px;
@@ -629,6 +629,7 @@
     font-size: 18px;
     border: 0px;
     padding: 10px;
+    cursor: pointer;
 
   }
 
@@ -672,6 +673,59 @@
   display: block;
   text-decoration: none;
 }
+/* Footer Css */
+    #footerContainer{
+      height: 450px;
+      display: flex;
+      width: 100%;
+      background-color: #111111;
+    }
+    #box1,#box2,#box3,#box4{
+      height: 70%;
+      width: 25%;
+      text-align: left;
+      background-color: #111111;
+      margin-top: 50px;
+      padding: 30px;
+    }
+    #box4{
+      display: flex;
+      justify-content: space-evenly;
+    }
+    #ancer{
+      font-size: 18px;
+      color: white;
+      font-weight: bolder;
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      font-style: inherit;
+    }
+    #ancer2{
+      font-size: 19px;
+      color: grey;
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      font-style: inherit;
+    }
+
+     #footerbottomdiv{
+      display: flex;
+      background-color: #111111;
+      justify-content: space-evenly;
+      padding: 20px;
+      
+    }
+    #ancer3{
+      font-size: 19px;
+      color: grey;
+      margin-top: 20px;
+      text-decoration: none;
+      display: block;
+      font-style: inherit;
+    }
+/* -------------- */
 @media  screen and (max-width: 600px) {
    #navabrContainer{
       display: block;
@@ -782,5 +836,21 @@
   }
   #carousalDiv img{
     width: 300px;
+  }
+  #footerContainer{
+    display: block;
+    width: 90%;
+    height: 100%;
+    
+  }
+  #box1,#box2,#box3,#box4{
+    width: 95%;
+    text-align: left;
+  }
+  #footerbottomdiv{
+    display: block;
+    margin-top: -20px;
+    width: 90%;
+    padding: 20px;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Box,Input,Typography,Button,TextField,CircularProgress,Autocomplete} from "@mui/material";
+import {Box,Input,Typography,Button,TextField,CircularProgress,Autocomplete, Avatar} from "@mui/material";
 import {Link} from "react-router-dom"
 
 
@@ -70,7 +70,17 @@ const Navbar = () => {
 
         </Box>
        
-        <Button style={{width:"10%",}}><img  width="100%" src="https://www.shareicon.net/data/256x256/2016/09/14/829028_package_512x512.png" alt="" /></Button>
+        {/* <Button style={{width:"10%",}}><img  width="100%" src="https://www.shareicon.net/data/256x256/2016/09/14/829028_package_512x512.png" alt="" /></Button> */}
+         {/* Menu Category */}
+         <Box class="dropdown">
+          <Typography class="dropbtn"><Avatar src="" /></Typography>
+            <Box class="dropdown-content">
+              <Link to="/signUp">SignIn </Link>
+              <Link to="/login">Login</Link>
+              <Link to="/cart">Cart</Link>
+              <Link to="/cart">Wishlist</Link>
+            </Box>
+       </Box>
       </Box>
     </Box>
     <div class="content-slider">

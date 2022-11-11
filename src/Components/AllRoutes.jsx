@@ -15,6 +15,7 @@ import Cart from './Cart';
 import SingleProduct from './SingleProduct';
 
 const AllRoutes = () => {
+  const name = localStorage.getItem("Name");
   return (
     <Box>
         <Routes>

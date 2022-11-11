@@ -6,6 +6,7 @@ import {Link} from "react-router-dom"
 const Navbar = () => {
 
   const [text,setText] = useState("");
+  const name = localStorage.getItem("Name");
 
   return ( <Box id="navbar">
     <Box id="navabrContainer" columns={{sm:1,md:2,lg:2,xl:2,base:1}} >
@@ -75,7 +76,7 @@ const Navbar = () => {
          <Box class="dropdown">
           <Typography class="dropbtn"><Avatar src="" /></Typography>
             <Box class="dropdown-content">
-              <Link to="/signUp">SignIn </Link>
+              <Link to="/signUp">SignUp/{name ? name : "SignIn"} </Link>
               <Link to="/login">Login</Link>
               <Link to="/cart">Cart</Link>
               <Link to="/cart">Wishlist</Link>

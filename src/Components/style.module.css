@@ -1,0 +1,72 @@
+@media  screen and (max-width: 600px) {
+      .alert{
+        width : 100%;
+        font-size: 18px;
+        border: 3px solid red;
+      }
+ }
+.alert {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    font-size: 22px;
+    font-style: italic;
+  }
+  .error {
+    color: white;
+    background-color: #e53e3e;
+    border-color: #e53e3e;
+  }
+  
+  .success {
+    color: white;
+    background-color: #38a169;
+    border-color: #38a169;
+  }
+  
+  .warning {
+    color: white;
+    background-color: #dd6b20;
+    border-color: #dd6b20;
+  }
+  .primary {
+    color: #084298;
+    background-color: #cfe2ff;
+    border-color: #b6d4fe;
+  }
+  
+  .secondary {
+    color: #41464b;
+    background-color: #e2e3e5;
+    border-color: #d3d6d8;
+  }
+  
+  .info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+  }
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  }
+  .hide {
+    display: none;
+  }

@@ -3,8 +3,11 @@ import React from 'react'
 import Navbar from './Navbar';
 import Footer from "./Footer";
 import { Link } from 'react-router-dom';
+import Carousal from "./Carousal"
 
 const Home = () => {
+
+  
   return (
     <Box><Navbar />
     <Box>
@@ -95,7 +98,9 @@ const Home = () => {
         </Box>
 
         {/* -----------Create Carousal Here -------------- */}
-
+                <Carousal />
+                
+        {/* ----------------------- */}
         <Box>
           <Typography id="h3" style={{textAlign:"left",fontSize:"30px"}}>More Nike</Typography>
           <Box id="categoryBox">

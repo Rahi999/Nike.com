@@ -605,8 +605,32 @@
 
 }
 /*---------------------- Carousal CSS  -------------------------- */
+#carousalDiv{
+  width: 35%;
+  height: 450px;
+  margin-left: 530px;
+}
+#carousalDiv img{
+  width: 350px;
+  border-radius: 8px;
+}
+#cdiv{
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+}
 
-  
+  #color{
+  }
+  #carousalButton{
+    width: 200px;
+    background-color:#cc005f ;
+    color: white;
+    font-size: 18px;
+    border: 0px;
+    padding: 10px;
+
+  }
 
 /*---------------------- Carousal CSS ----------------------------*/
 
@@ -660,7 +684,7 @@
     width: 90%;
     border: 1px solid grey;
     border-radius: 8px;
-    padding: 3px;
+    padding: 3px solid teal;
   }
 
   #homePage{
@@ -741,5 +765,22 @@
   }
   #bottomLink{
     font-size: 17px;
+  }
+  #cdiv{
+     width: 300px;
+    display: block;
+  
+  }
+ 
+  #color{
+    width: 300px;
+     text-align: left;
+    
+  }
+  #carousalDiv{
+    margin-left: 0px;
+  }
+  #carousalDiv img{
+    width: 300px;
   }
 }

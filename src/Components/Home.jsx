@@ -9,10 +9,35 @@ const Home = () => {
 
   
   return (
-    <Box><Navbar />
     <Box>
-      
+    <Box>
+   
       <Box id="homePage">
+      <div class="content-slider">
+  <div class="slider">
+    <div class="mask">
+      <ul>
+        <li class="anim1">
+          <div class="quote">It's taking us a bit longer than usual to get your order to you. Thank you for your patience.</div>
+        </li>
+        <li class="anim2">
+          <div class="quote">Save Up to 40%. Shop All Our New Markdowns</div>
+        </li>
+        <li class="anim3">
+          <div class="quote">Hello Nike App. Download the app to access everything Nike. Get Your Great</div>
+        </li>
+        <li class="anim4">
+          <div class="quote">Go For Men's Shopping</div>
+        </li>
+        <li class="anim5">
+          <div class="quote">Go For Women's Shopping</div>
+        </li>
+      
+       
+      </ul>
+    </div>
+  </div>
+  </div>
         <Link to="/kidsShoes">
           <img id='kidsImage' src="https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/w_981,c_limit/2bb48328-a124-4683-b785-cadae17e8eea/nike-just-do-it.jpg" alt="Kids"/>
         </Link>
@@ -151,7 +176,7 @@ const Home = () => {
       </Box>
       
     </Box>
-    <Footer />
+    
     </Box>
   )
 }

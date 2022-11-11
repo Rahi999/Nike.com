@@ -63,7 +63,7 @@ const Navbar = () => {
         <Box style={{display:"flex"}}>
         
         <div title="Search For Products" class="container">
-       <input type="text" placeholder="Search..." />
+       <input id="input" type="text" placeholder="Search..." />
        <div onClick={()=> alert("Search Working")} class="search"></div>
          </div>
         
@@ -83,31 +83,7 @@ const Navbar = () => {
        </Box>
       </Box>
     </Box>
-    <div class="content-slider">
-  <div class="slider">
-    <div class="mask">
-      <ul>
-        <li class="anim1">
-          <div class="quote">It's taking us a bit longer than usual to get your order to you. Thank you for your patience.</div>
-        </li>
-        <li class="anim2">
-          <div class="quote">Save Up to 40%. Shop All Our New Markdowns</div>
-        </li>
-        <li class="anim3">
-          <div class="quote">Hello Nike App. Download the app to access everything Nike. Get Your Great</div>
-        </li>
-        <li class="anim4">
-          <div class="quote">Go For Men's Shopping</div>
-        </li>
-        <li class="anim5">
-          <div class="quote">Go For Women's Shopping</div>
-        </li>
-      
-       
-      </ul>
-    </div>
-  </div>
-  </div>
+    
     </Box>
   )
 }

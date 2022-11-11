@@ -5,7 +5,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 const Footer = () => {
 
   return (
-    <Box>
+    <Box id="footerDiv">
       <Box id="footerContainer">
         <Box id="box1">
           <a href="#" id="ancer">FIND A STORE</a>

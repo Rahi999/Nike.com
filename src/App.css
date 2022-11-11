@@ -61,7 +61,7 @@
       transition: all .5s;
     }
   
-  input {
+  #input {
     font-family: 'Inconsolata', monospace;
     position: absolute;
     margin: auto;
@@ -87,25 +87,25 @@
     font-weight: bolder;
     letter-spacing: 0.1em;
   }
-    input:hover {
+    #input:hover {
       cursor: pointer;
     }
-    input:focus {
+    #input:focus {
       width: 300px;
       opacity: 1;
       cursor: text;
     }
-    input:focus ~ .search {
+    #input:focus ~ .search {
       right: -250px;
       background: #151515;
       z-index: 6;
     }
-      input::before {
+      #input::before {
         top: 0;
         left: 0;
         width: 25px;
       }
-      input::after {
+      #input::after {
         top: 0;
         left: 0;
         width: 25px;
@@ -116,7 +116,7 @@
         transform: rotate(-45deg);
       }
     
-    input::placeholder {
+    #input::placeholder {
       color: grey;
       opacity: 0.5;
       font-weight: bolder;
@@ -726,6 +726,31 @@
       font-style: inherit;
     }
 /* -------------- */
+/* SignUp CSS */
+
+  #signUpDiv{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+  }
+ 
+  #signUpInput {
+    border: 1px solid;
+    padding: 10px;
+    border-bottom: 1px solid;
+    font-size: 18px;
+  }
+  #signupButton{
+    width: 250px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-size: 18px;    
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    cursor: pointer;
+  }
+/* ---------- */
 @media  screen and (max-width: 600px) {
    #navabrContainer{
       display: block;
@@ -852,5 +877,21 @@
     margin-top: -20px;
     width: 90%;
     padding: 20px;
+  }
+  
+  #menClothingContainer,
+   #menShoesContainer,
+   #womenClothingContainer,
+   #womenShoesContainer,
+   #kidsShoesContainer,
+   #signUpContainer,
+   #loginContainer,
+   #cartContainer
+   {
+    margin-top: 30%;
+  }
+
+  #signUpDiv{
+    width: 100%;
   }
 }

@@ -9,12 +9,15 @@ import "./men.module.css"
 const MenClothing = () => {
     
   const dispatch = useDispatch();
+  const [limit,setLimit] = useState(20);
+  const [page,setPage] = useState(1);
+
   useEffect(() => {
      dispatch(menClothingLoadingFunction());
-     axios.get("http://localhost:8080/Men_Clothing")
+     axios.get(`http://localhost:8080/Men_Clothing?_limit=${limit}&_page=&{page}`)
      .then((res) => dispatch(menClothingSuccessFunction(res.data)))
      .catch((err) => dispatch(menClothingFailureFunction()))
-  },[]);
+  },[limit,page]);
 
   const {menClothesLoading,menClothesError,menClothes} = useSelector((state) => {
     return {
@@ -29,7 +32,7 @@ const MenClothing = () => {
     : menClothesError ? (<div id="menClothingContainer"><img width="35%" style={{marginLeft:"30%"}} src="https://gifimage.net/wp-content/uploads/2018/11/something-went-wrong-gif-2.gif" alt="Error Logo" /></div>)
     :(
     <Box id="menClothingContainer">
-      <Box style={{display:"flex",justifyContent : "space-between"}}>
+      <Box style={{display:"flex",justifyContent : "space-between",padding:"10px"}}>
       <Typography id="h3">Men's Clothing({menClothes ? menClothes.length : 0})</Typography>
       <Typography id="h3">SortBy</Typography>
       <Typography id="h3">Set Limit</Typography>
@@ -39,8 +42,13 @@ const MenClothing = () => {
         <Box id="container1" ></Box>
         <Box id="container2" >
           {menClothes && menClothes.map((items) => (
-           <Link key={items.id} to={`/menClothing/${items.id}`}>
-             <Box style={{border:"1px solid",height:"300px"}}  >
+           <Link key={items.id} to={`/menClothing/${items.id}`} style={{textDecoration:"none"}}>
+             <Box id="mappedBox" >
+                 <img src={items.image} alt={items.title} />
+                 <Typography  id="description">{items.description}</Typography>
+                 <Typography id="title">{items.title}</Typography>
+                 <Typography id="color">{items.color}</Typography>
+                 <Typography id="price">{items.price}</Typography>
                  
              </Box>
            </Link>

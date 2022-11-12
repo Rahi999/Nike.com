@@ -765,12 +765,41 @@
 }
 #container2 {
    width: 78%;
-  border: 1px solid;
   height: 100vh;
   overflow: scroll;
   display: grid;
   grid-template-columns: repeat(3,1fr);
 }
+ #mappedBox{
+  height: 500px;
+  padding: 10px;
+ }
+ #mappedBox>img{
+  width: 95%;
+  height: 300px;
+ }
+ #description{
+  font-size: 22px;
+  font-style: normal;
+  color: #bb724d;
+ }
+ #title{
+  font-size: 22px;
+  font-style: normal;
+  color: grey;
+  
+ }
+ #color{
+  font-size: 22px;
+  font-style: normal;
+  color: grey;
+ }
+ #price{
+  font-size: 22px;
+  font-style: normal;
+  color: black;
+ }
+ 
 /* ---------- */
 @media  screen and (max-width: 600px) {
    #navabrContainer{
@@ -822,7 +851,7 @@
     margin-top: 20px;
   }
   #h3{
-    font-size: 20px;
+    font-size: 18px;
   }
   #h1{
     font-size: 30px;
@@ -924,4 +953,14 @@
   grid-template-columns: repeat(1,1fr);
 
 }
+#mappedBox{
+  height: 350px;
+
+ }
+ #mappedBox>img{
+  height: 200px;
+ }
+ #description,#title,#color,#price{
+  font-size: 18px;
+ }
 }

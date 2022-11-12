@@ -12,7 +12,7 @@ import MenShoes from './MenShoes';
 import WomenShoes from './WomenShoes';
 import KidsShoes from './KidsShoes';
 import Cart from './Cart';
-import SingleProduct from './SingleProduct';
+import SingleMenClothes from './SingleMenClothes';
 
 const AllRoutes = () => {
   const name = localStorage.getItem("Name");
@@ -30,7 +30,7 @@ const AllRoutes = () => {
             <Route path="/womenShoes" element={<WomenShoes />} />
             <Route path="/kidsShoes" element={<KidsShoes />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/product/:id" element={<SingleProduct />} />
+            <Route path="/product/:id" element={<SingleMenClothes />} />
         </Routes>
     </Box>
   )

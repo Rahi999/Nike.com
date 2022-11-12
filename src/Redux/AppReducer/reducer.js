@@ -1,9 +1,21 @@
+import { MEN_CLOTHING_FAILURE, MEN_CLOTHING_LOADING, MEN_CLOTHING_SUCCESS } from "./actionType";
+
 const initState = {
     menClothes : [],
     menShoes : [],
     womenClothes : [],
     womenShoes : [],
     kidsShoes : [],
+    menClothesLoading : false,
+    menClothesError : false,
+    menShoesLoading : false,
+    menShoesError : false,
+    womenClothesLoading : false,
+    womenClothesError : false,
+    womenShoesLoading : false,
+    womenShoesError : false,
+    kidsShoesLoading : false,
+    kidsShoesError : false,
     carouselData : [
         {
             "image": "https:\/\/static.nike.com\/a\/images\/c_limit,w_592,f_auto\/t_product_v1\/d5f84f54-480d-4186-a0ea-3fea15f59d67\/air-force-1-high-se-shoes-6b703K.png",
@@ -75,21 +87,33 @@ const initState = {
             "price": "5 695",
             "id": 10
            }
-    ],
-    menClothesLoading : false,
-    menClothesError : false,
-    menShoesLoading : false,
-    menShoesError : false,
-    womenClothesLoading : false,
-    womenClothesError : false,
-    womenShoesLoading : false,
-    womenShoesError : false,
-    kidsShoesLoading : false,
-    kidsShoesError : false
+    ]
 }
 
 export const reducer = (state=initState, {type,payload}) => {
     switch(type) {
+        case MEN_CLOTHING_LOADING : {
+            return {
+                ...state,
+                menClothesLoading : true,
+                menClothesError : false
+            }
+        }
+        case MEN_CLOTHING_FAILURE : {
+            return {
+                ...state,
+                menClothesLoading : false,
+                menClothesError : true
+            }
+        }
+        case MEN_CLOTHING_SUCCESS : {
+            return {
+                ...state,
+                menClothesLoading : false,
+                menClothesError : false,
+                menClothes : [...payload]
+            }
+        }
         default : return state;
     }
 }

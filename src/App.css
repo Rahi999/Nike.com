@@ -752,6 +752,26 @@
   }
 /* ---------- */
 
+/* MenClothing CSS */
+   
+#menClotheContainer {
+  display: flex;
+}
+#container1 {
+  width: 22%;
+  border: 1px solid;
+  height: 100vh;
+  overflow: scroll;
+}
+#container2 {
+   width: 78%;
+  border: 1px solid;
+  height: 100vh;
+  overflow: scroll;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+/* ---------- */
 @media  screen and (max-width: 600px) {
    #navabrContainer{
       display: block;
@@ -802,7 +822,7 @@
     margin-top: 20px;
   }
   #h3{
-    font-size: 22px;
+    font-size: 20px;
   }
   #h1{
     font-size: 30px;
@@ -887,7 +907,8 @@
    #kidsShoesContainer,
    #signUpContainer,
    #loginContainer,
-   #cartContainer
+   #cartContainer,
+   #singleProductContainer
    {
     margin-top: 30%;
   }
@@ -895,4 +916,12 @@
   #signUpDiv{
     width: 100%;
   }
+  #container1 {
+    width: 40%;
+}
+#container2{
+    width: 60%;
+  grid-template-columns: repeat(1,1fr);
+
+}
 }

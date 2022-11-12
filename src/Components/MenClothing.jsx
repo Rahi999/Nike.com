@@ -39,7 +39,7 @@ const MenClothing = () => {
         <Box id="container1" ></Box>
         <Box id="container2" >
           {menClothes && menClothes.map((items) => (
-           <Link key={items.id} to={`/product/:${items.id}`}>
+           <Link key={items.id} to={`/menClothing/${items.id}`}>
              <Box style={{border:"1px solid",height:"300px"}}  >
                  
              </Box>

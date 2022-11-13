@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import {useSelector,useDispatch} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link, useSearchParams} from "react-router-dom";
 import axios from "axios";
 import { menClothingFailureFunction, menClothingLoadingFunction, menClothingSuccessFunction } from '../Redux/AppReducer/action';
 import {Box,Typography} from "@mui/material" ;
@@ -10,7 +10,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import "./men.module.css"
+import "./men.module.css";
+
 
 const MenClothing = () => {
     
@@ -19,6 +20,7 @@ const MenClothing = () => {
   const [page,setPage] = useState(1);
   const [allData,setAllData] = useState([]);
   const [sort, setSort] = React.useState('');
+  const [searchParams,setSearchParams] = useSearchParams()
 
   // const handleSortChange = (event) => {
   //   setAge(event.target.value);
@@ -28,13 +30,19 @@ const MenClothing = () => {
   const handleChange = (event, value) => {
     setPage(value);
   };
-
+   
+  const queryParams = {
+    params: {
+      _sort: sort && "price",
+      _order: sort
+    }
+  };
   useEffect(() => {
      dispatch(menClothingLoadingFunction());
-     axios.get(`http://localhost:8080/Men_Clothing?_limit=${limit}&_page=${page}`)
+     axios.get(`http://localhost:8080/Men_Clothing?_limit=${limit}&_page=${page}`,queryParams)
      .then((res) => dispatch(menClothingSuccessFunction(res.data)))
      .catch((err) => dispatch(menClothingFailureFunction()))
-  },[limit,page]);
+  },[limit,page,sort]);
 
   useEffect(() => {
     dispatch(menClothingLoadingFunction());
@@ -45,6 +53,14 @@ const MenClothing = () => {
     })
     .catch((err) => null)
   },[])
+
+  useEffect(() => {
+     setSearchParams({
+      page,
+      limit,
+      sort
+     })
+  },[page,limit,sort])
 
   const {menClothesLoading,menClothesError,menClothes} = useSelector((state) => {
     return {
@@ -84,7 +100,7 @@ const MenClothing = () => {
         <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          value={sort}
+          value={limit}
           onChange={(e)=> setLimit(e.target.value)}
           label="sortBy"
         >

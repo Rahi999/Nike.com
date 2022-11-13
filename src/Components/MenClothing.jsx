@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 import axios from "axios";
 import { menClothingFailureFunction, menClothingLoadingFunction, menClothingSuccessFunction } from '../Redux/AppReducer/action';
 import {Box,Typography} from "@mui/material" ;
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 import "./men.module.css"
 
 const MenClothing = () => {
@@ -11,13 +13,28 @@ const MenClothing = () => {
   const dispatch = useDispatch();
   const [limit,setLimit] = useState(20);
   const [page,setPage] = useState(1);
+  const [allData,setAllData] = useState([]);
+
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
 
   useEffect(() => {
      dispatch(menClothingLoadingFunction());
-     axios.get(`http://localhost:8080/Men_Clothing?_limit=${limit}&_page=&{page}`)
+     axios.get(`http://localhost:8080/Men_Clothing?_limit=${limit}&_page=${page}`)
      .then((res) => dispatch(menClothingSuccessFunction(res.data)))
      .catch((err) => dispatch(menClothingFailureFunction()))
   },[limit,page]);
+
+  useEffect(() => {
+    dispatch(menClothingLoadingFunction());
+    axios.get("http://localhost:8080/Men_Clothing")
+    .then((res)=> {
+      setAllData(res.data)
+       
+    })
+    .catch((err) => null)
+  },[])
 
   const {menClothesLoading,menClothesError,menClothes} = useSelector((state) => {
     return {
@@ -27,13 +44,13 @@ const MenClothing = () => {
     }
   })
   //  console.log(menClothesLoading,menClothesError,menClothes)
-
+  
   return menClothesLoading ? (<div id="menClothingContainer"><img width="30%" style={{marginLeft:"30%"}} src="https://i.pinimg.com/originals/b4/4e/22/b44e229598a8bdb7f2f432f246fb0813.gif"  alt="Loading Logo"/></div>)
     : menClothesError ? (<div id="menClothingContainer"><img width="35%" style={{marginLeft:"30%"}} src="https://gifimage.net/wp-content/uploads/2018/11/something-went-wrong-gif-2.gif" alt="Error Logo" /></div>)
     :(
     <Box id="menClothingContainer">
       <Box style={{display:"flex",justifyContent : "space-between",padding:"10px"}}>
-      <Typography id="h3">Men's Clothing({menClothes ? menClothes.length : 0})</Typography>
+      <Typography id="h3">Men's Clothing({allData ? allData.length : 0})</Typography>
       <Typography id="h3">SortBy</Typography>
       <Typography id="h3">Set Limit</Typography>
 
@@ -55,9 +72,17 @@ const MenClothing = () => {
           ))}
         </Box>
       </Box>
+      <Box style={{width:"50%",margin:"auto",padding:"20px",marginTop:"30px",borderRadius:"8px",backgroundColor:"#f5f5f5",textAlign:"center"}}>
+      <Pagination size="large" variant="outlined"  count={allData ? Math.floor(allData.length/limit): 1 } page={page} onChange={handleChange} />
+      </Box>
     
     </Box>
   )
 }
 
 export default MenClothing
+
+
+
+
+

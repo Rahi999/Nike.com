@@ -6,6 +6,10 @@ import { menClothingFailureFunction, menClothingLoadingFunction, menClothingSucc
 import {Box,Typography} from "@mui/material" ;
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import "./men.module.css"
 
 const MenClothing = () => {
@@ -14,7 +18,13 @@ const MenClothing = () => {
   const [limit,setLimit] = useState(20);
   const [page,setPage] = useState(1);
   const [allData,setAllData] = useState([]);
+  const [sort, setSort] = React.useState('');
 
+  // const handleSortChange = (event) => {
+  //   setAge(event.target.value);
+    
+  // };
+  // alert(age)
   const handleChange = (event, value) => {
     setPage(value);
   };
@@ -51,8 +61,43 @@ const MenClothing = () => {
     <Box id="menClothingContainer">
       <Box style={{display:"flex",justifyContent : "space-between",padding:"10px"}}>
       <Typography id="h3">Men's Clothing({allData ? allData.length : 0})</Typography>
-      <Typography id="h3">SortBy</Typography>
-      <Typography id="h3">Set Limit</Typography>
+      <Box>
+      <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="demo-simple-select-standard-label">SortBy Price</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          value={sort}
+          onChange={(e)=> setSort(e.target.value)}
+          label="sortBy"
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value="desc">High To Low</MenuItem>
+          <MenuItem value="asc">Low To High</MenuItem>
+        </Select>
+      </FormControl>
+      </Box>
+      <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="demo-simple-select-standard-label">Items / Page</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          value={sort}
+          onChange={(e)=> setLimit(e.target.value)}
+          label="sortBy"
+        >
+          <MenuItem value="">
+            <em>Default</em>
+          </MenuItem>
+          <MenuItem value="20">20 Products</MenuItem>
+          <MenuItem value="30">30 Products</MenuItem>
+          <MenuItem value="40">40 Products</MenuItem>
+          <MenuItem value="50">50 Products</MenuItem>
+          <MenuItem value="100">100 Products</MenuItem>
+        </Select>
+      </FormControl>
 
       </Box>
       <Box id="menClotheContainer" >
@@ -81,8 +126,4 @@ const MenClothing = () => {
 }
 
 export default MenClothing
-
-
-
-
 

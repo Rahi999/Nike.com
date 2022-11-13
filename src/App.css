@@ -131,6 +131,7 @@
  ::-webkit-scrollbar-thumb {
   background: #888; 
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
@@ -702,6 +703,18 @@
       text-decoration: none;
       font-style: inherit;
     }
+    #categoryAncer{
+      font-size: 20px;
+      color: black;
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      font-style: inherit;
+      font-style: italic;
+    }
+    #categoryAncer:hover{
+       color:grey
+    }
     #ancer2{
       font-size: 19px;
       color: grey;
@@ -759,25 +772,27 @@
   display: flex;
 }
 #container1 {
-  width: 22%;
-  border: 1px solid;
+  width: 20%;
   height: 100vh;
   overflow: scroll;
+  padding: 10px;
+  overflow-x: hidden;
 }
 #container2 {
-   width: 78%;
-  height: 100vh;
+   width: 80%;
+  height: 110vh;
   overflow: scroll;
   display: grid;
   grid-template-columns: repeat(3,1fr);
+  overflow-x: hidden;
 }
  #mappedBox{
-  height: 500px;
+  height: 530px;
   padding: 10px;
  }
  #mappedBox>img{
   width: 95%;
-  height: 300px;
+  height: 330px;
  }
  #description{
   font-size: 22px;
@@ -947,10 +962,10 @@
     width: 100%;
   }
   #container1 {
-    width: 40%;
+    width: 35%;
 }
 #container2{
-    width: 60%;
+    width: 65%;
   grid-template-columns: repeat(1,1fr);
 
 }
@@ -963,5 +978,8 @@
  }
  #description,#title,#color,#price{
   font-size: 18px;
+ }
+ #categoryAncer{
+  font-size: 16px;
  }
 }

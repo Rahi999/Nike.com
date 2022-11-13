@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react'
 import {useSelector,useDispatch} from "react-redux";
-import {Link, useSearchParams} from "react-router-dom";
+import {Link, Navigate, useNavigate, useSearchParams} from "react-router-dom";
 import axios from "axios";
 import { menClothingFailureFunction, menClothingLoadingFunction, menClothingSuccessFunction } from '../Redux/AppReducer/action';
-import {Box,Typography} from "@mui/material" ;
+import {Box,Typography,Checkbox} from "@mui/material" ;
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import InputLabel from '@mui/material/InputLabel';
@@ -13,6 +13,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import "./men.module.css";
 
 
+
 const MenClothing = () => {
     
   const dispatch = useDispatch();
@@ -20,7 +21,9 @@ const MenClothing = () => {
   const [page,setPage] = useState(1);
   const [allData,setAllData] = useState([]);
   const [sort, setSort] = React.useState('');
-  const [searchParams,setSearchParams] = useSearchParams()
+  const [searchParams,setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const [text,setText] = useState('')
 
   // const handleSortChange = (event) => {
   //   setAge(event.target.value);
@@ -33,8 +36,9 @@ const MenClothing = () => {
    
   const queryParams = {
     params: {
-      _sort: sort && "price",
-      _order: sort
+       query: text,
+       _sort: sort && "price",
+       _order: sort
     }
   };
   useEffect(() => {
@@ -42,7 +46,7 @@ const MenClothing = () => {
      axios.get(`http://localhost:8080/Men_Clothing?_limit=${limit}&_page=${page}`,queryParams)
      .then((res) => dispatch(menClothingSuccessFunction(res.data)))
      .catch((err) => dispatch(menClothingFailureFunction()))
-  },[limit,page,sort]);
+  },[limit,page,sort,text]);
 
   useEffect(() => {
     dispatch(menClothingLoadingFunction());
@@ -70,6 +74,7 @@ const MenClothing = () => {
     }
   })
   //  console.log(menClothesLoading,menClothesError,menClothes)
+  // alert(text)
   
   return menClothesLoading ? (<div id="menClothingContainer"><img width="30%" style={{marginLeft:"30%"}} src="https://i.pinimg.com/originals/b4/4e/22/b44e229598a8bdb7f2f432f246fb0813.gif"  alt="Loading Logo"/></div>)
     : menClothesError ? (<div id="menClothingContainer"><img width="35%" style={{marginLeft:"30%"}} src="https://gifimage.net/wp-content/uploads/2018/11/something-went-wrong-gif-2.gif" alt="Error Logo" /></div>)
@@ -77,6 +82,8 @@ const MenClothing = () => {
     <Box id="menClothingContainer">
       <Box style={{display:"flex",justifyContent : "space-between",padding:"10px"}}>
       <Typography id="h3">Men's Clothing({allData ? allData.length : 0})</Typography>
+
+      {/* ------------- Filtering Contaier ------------------ */}
       <Box>
       <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-standard-label">SortBy Price</InputLabel>
@@ -104,7 +111,7 @@ const MenClothing = () => {
           onChange={(e)=> setLimit(e.target.value)}
           label="sortBy"
         >
-          <MenuItem value="">
+          <MenuItem value="20">
             <em>Default</em>
           </MenuItem>
           <MenuItem value="20">20 Products</MenuItem>
@@ -117,7 +124,119 @@ const MenClothing = () => {
 
       </Box>
       <Box id="menClotheContainer" >
-        <Box id="container1" ></Box>
+        <Box id="container1" >
+          <Typography id="h3" style={{textAlign:"left"}}>Category</Typography>
+          <Link id="categoryAncer" to="/menShoes" >Shoes</Link>
+          <Link id="categoryAncer" to="/menClothing" >Tops & T-shirts</Link>
+          <Link id="categoryAncer" to="/womenClothing" >Women Clothing</Link>
+          <Link id="categoryAncer" to="/womenShoes" >Women Shoes</Link>
+          <Link id="categoryAncer" to="/kidsShoes" >Kids</Link>
+          <hr style={{marginTop:"20px"}} />
+          <Typography id="h3" style={{textAlign:"left"}}>Gender(2)</Typography>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/menShoes")} color="default" />
+          <Link id="categoryAncer" to="/menShoes" style={{marginTop:"-1px"}} >Male</Link>
+          </Box>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/womenClothing")} color="default" />
+          <Link id="categoryAncer" to="/womenClothing" style={{marginTop:"-1px"}} >Female</Link>
+          </Box>
+          <hr style={{marginTop:"20px"}} />
+          <Typography id="h3" style={{textAlign:"left"}}>Kids</Typography>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/kidsShoes")} color="default" />
+          <Link id="categoryAncer" to="/kidsShoes" style={{marginTop:"-1px"}} >Shoes</Link>
+          </Box>
+          <hr style={{marginTop:"20px"}} />
+          <Typography id="h3" style={{textAlign:"left"}}>Brand</Typography>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/menShoes")} color="default" />
+          <Link id="categoryAncer" to="/menShoes" style={{marginTop:"-1px",fontWeight:"bold"}} >Nike Sportswear</Link>
+          </Box>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/kidsShoes")} color="default" />
+          <Link id="categoryAncer" to="/kidsShoes" style={{marginTop:"-1px",fontWeight:"bold"}} >Jordan</Link>
+          </Box>
+           <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/womenShoes")} color="default" />
+          <Link id="categoryAncer" to="/womenShoes" style={{marginTop:"-1px",fontWeight:"bold"}} >Nike By You</Link>
+          </Box>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/womenShoes")} color="default" />
+          <Link id="categoryAncer" to="/womenShoes" style={{marginTop:"-1px",fontWeight:"bold"}} >Nike Lab</Link>
+          </Box>
+
+          <hr style={{marginTop:"20px"}} />
+          <Typography id="h3" style={{textAlign:"left"}}>Sports</Typography>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/menShoes")} color="default" />
+          <Link id="categoryAncer" to="/menShoes" style={{marginTop:"-1px",fontWeight:"bold"}} >Lifestyle</Link>
+          </Box>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/womenShoes")} color="default" />
+          <Link id="categoryAncer" to="/womenShoes" style={{marginTop:"-1px",fontWeight:"bold"}} >Running</Link>
+          </Box>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/kidsShoes")} color="default" />
+          <Link id="categoryAncer" to="/kidsShoes" style={{marginTop:"-1px",fontWeight:"bold"}} >Training & Gym</Link>
+          </Box>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/menShoes")} color="default" />
+          <Link id="categoryAncer" to="/menShoes" style={{marginTop:"-1px",fontWeight:"bold"}} >Basketball</Link>
+          </Box>
+
+          <hr style={{marginTop:"20px"}} />
+          <Typography id="h3" style={{textAlign:"left"}}>Collaborator</Typography>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/menShoes")} color="default" />
+          <Link id="categoryAncer" to="/menShoes" style={{marginTop:"-1px",}} >Nike X MMW</Link>
+          </Box>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/womenClothing")} color="default" />
+          <Link id="categoryAncer" to="/womenClothing" style={{marginTop:"-1px",}} >Sacai</Link>
+          </Box>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/kidsShoes")} color="default" />
+          <Link id="categoryAncer" to="/kidsShoes" style={{marginTop:"-1px",}} >Stussy</Link>
+          </Box>
+          <hr style={{marginTop:"20px"}} />
+          <Typography id="h3" style={{textAlign:"left"}}>Best For</Typography>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/menClothing")} color="default" />
+          <Link id="categoryAncer" to="/menShoes" style={{marginTop:"-1px",fontweight:"bold"}} >Warm Weather</Link>
+          </Box>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/womenClothing")} color="default" />
+          <Link id="categoryAncer" to="/womenClothing" style={{marginTop:"-1px",fontweight:"bold"}} >Wet Weather</Link>
+          </Box>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/kidsShoes")} color="default" />
+          <Link id="categoryAncer" to="/kidsShoes" style={{marginTop:"-1px",fontweight:"bold"}} >Cold Weather</Link>
+          </Box>
+
+          <hr style={{marginTop:"20px"}} />
+          <Typography id="h3" style={{textAlign:"left"}}>Atheletes</Typography>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/menShoes")} color="default" />
+          <Link id="categoryAncer" to="/menShoes" style={{marginTop:"-1px",}} >LeBron James</Link>
+          </Box>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/womenClothing")} color="default" />
+          <Link id="categoryAncer" to="/womenClothing" style={{marginTop:"-1px",}} >Kyrie Irving</Link>
+          </Box>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/kidsShoes")} color="default" />
+          <Link id="categoryAncer" to="/kidsShoes" style={{marginTop:"-1px",}} >Kevin Duant</Link>
+          </Box>
+          <Box style={{display:"flex",height:"30px"}}>
+          <Checkbox label="Male" onClick={()=>navigate("/kidsShoes")} color="default" />
+          <Link id="categoryAncer" to="/kidsShoes" style={{marginTop:"-1px",}} >Paul George</Link>
+          </Box>
+
+        </Box>
+
+        {/* -------------------      Products Container  ------- */}
+
         <Box id="container2" >
           {menClothes && menClothes.map((items) => (
            <Link key={items.id} to={`/menClothing/${items.id}`} style={{textDecoration:"none"}}>
@@ -133,7 +252,7 @@ const MenClothing = () => {
           ))}
         </Box>
       </Box>
-      <Box style={{width:"50%",margin:"auto",padding:"20px",marginTop:"30px",borderRadius:"8px",backgroundColor:"#f5f5f5",textAlign:"center"}}>
+      <Box style={{width:"50%",margin:"auto",padding:"20px",marginTop:"30px",borderRadius:"10px",backgroundColor:"#f5f5f5",textAlign:"center"}}>
       <Pagination size="large" variant="outlined"  count={allData ? Math.floor(allData.length/limit): 1 } page={page} onChange={handleChange} />
       </Box>
     

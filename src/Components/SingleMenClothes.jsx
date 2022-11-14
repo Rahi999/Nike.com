@@ -1,8 +1,11 @@
 import React,{useEffect,useState} from 'react'
 import { useParams } from 'react-router-dom';
-import {Box,Typography} from "@mui/material"
+import {Box,Typography,StyledRating} from "@mui/material"
 import axios from 'axios';
-
+import { styled } from '@mui/material/styles';
+import Rating from '@mui/material/Rating';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 const SingleMenClothes = () => {
   const params = useParams();
   const [SingleMenClothesData,setSingleMenClothesData] = useState({});
@@ -23,6 +26,15 @@ const SingleMenClothes = () => {
   },[])
   // console.log(params)
   // console.log(loading,error,SingleMenClothesData);
+  const StyledRating = styled(Rating)({
+  '& .MuiRating-iconFilled': {
+    color: '#ff6d75',
+  },
+  '& .MuiRating-iconHover': {
+    color: '#ff3d47',
+  },
+});
+
   const handleCart = () => {
     alert("Add To Cart Button Working")
   }
@@ -60,6 +72,21 @@ const SingleMenClothes = () => {
           </select>
           <br />
           <br />
+          <Box
+      sx={{
+        '& > legend': { mt: 2 },
+      }}
+    >
+      <Typography id="price" component="legend">Please Select Rating Stars</Typography>
+      <StyledRating
+        name="customized-color"
+        defaultValue={3}
+        getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+        precision={0.5}
+        icon={<FavoriteIcon fontSize="inherit" />}
+        emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+      />
+    </Box> <br /><br />
           <button onClick={() => handleCart()} id="cartButton">Add to Bag</button>
           <br /><br />
           <Typography id="color">This product is excluded from site promotions and discounts.</Typography>
@@ -96,3 +123,4 @@ const SingleMenClothes = () => {
 }
 
 export default SingleMenClothes
+

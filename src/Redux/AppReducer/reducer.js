@@ -1,4 +1,7 @@
 import { 
+    KIDS_SHOES_FAILURE,
+    KIDS_SHOES_LOADING,
+    KIDS_SHOES_SUCCESS,
     MEN_CLOTHING_FAILURE,
     MEN_CLOTHING_LOADING,
     MEN_CLOTHING_SUCCESS,
@@ -196,6 +199,29 @@ export const reducer = (state=initState, {type,payload}) => {
                 womenShoesLoading : false,
                 womenShoesError : false,
                 womenShes : [...payload]
+            }
+        }
+        // Cases For Kids Shoes Data
+        case KIDS_SHOES_LOADING : {
+            return {
+                ...state,
+                kidsShoesLoading : true,
+                kidsShoesError : false
+            }
+        }
+        case KIDS_SHOES_FAILURE : {
+            return {
+                ...state,
+                kidsShoesLoading : false,
+                kidsShoesError : true
+            }
+        }
+        case KIDS_SHOES_SUCCESS : {
+            return {
+                ...state,
+                kidsShoesLoading : false,
+                kidsShoesError : false,
+                kidsShoes : [...payload]
             }
         }
         default : return state;

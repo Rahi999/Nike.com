@@ -1,4 +1,7 @@
 import { 
+    KIDS_SHOES_FAILURE,
+    KIDS_SHOES_LOADING,
+     KIDS_SHOES_SUCCESS,
      MEN_CLOTHING_FAILURE,
      MEN_CLOTHING_LOADING,
      MEN_CLOTHING_SUCCESS,
@@ -79,6 +82,23 @@ export const womenShoesErrorFunction = () => {
 export const womenShoesSuccessFunction = (payload) => {
     return {
         type : WOMEN_SHOES_SUCCESS,
+        payload
+    }
+}
+// Actions for Kids Shoes Data
+export const kidsShoesLoadingFunction = () => {
+    return {
+        type : KIDS_SHOES_LOADING
+    }
+}
+export const kidsShoesFailureFunction = () => {
+    return {
+        type : KIDS_SHOES_FAILURE
+    }
+}
+export const kidsShoesSuccessFunction = (payload) => {
+    return {
+        type : KIDS_SHOES_SUCCESS,
         payload
     }
 }

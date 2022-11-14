@@ -13,7 +13,11 @@ import WomenShoes from './WomenShoes';
 import KidsShoes from './KidsShoes';
 import Cart from './Cart';
 import SingleMenClothes from './SingleMenClothes';
-
+import SingleMenShoes from './SingleMenShoes';
+import SingleWomenClothes from "./SingleWomenClothes";
+import SingleWomenShoes from "./SingleWomenShoes"
+import SingleKidsShoes from "./SingleKidsShoes"
+  
 const AllRoutes = () => {
   const name = localStorage.getItem("Name");
   return (
@@ -31,6 +35,10 @@ const AllRoutes = () => {
             <Route path="/kidsShoes" element={<KidsShoes />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/menClothing/:id" element={<SingleMenClothes />} />
+            <Route path="/menShoes/:id" element={<SingleMenShoes />} />
+            <Route path="/womenClothing/:id" element={<SingleWomenClothes />} />
+            <Route path="/womenShoes/:id" element={<SingleWomenShoes />} />
+            <Route path="/kidsShoes/:id" element={<SingleKidsShoes />} />
         </Routes>
     </Box>
   )

@@ -1,4 +1,18 @@
-import { MEN_CLOTHING_FAILURE, MEN_CLOTHING_LOADING, MEN_CLOTHING_SUCCESS } from "./actionType";
+import { 
+    MEN_CLOTHING_FAILURE,
+    MEN_CLOTHING_LOADING,
+    MEN_CLOTHING_SUCCESS,
+    MEN_SHOES_FAILURE,
+    MEN_SHOES_LOADING,
+    MEN_SHOES_SUCCESS,
+    WOMEN_CLOTHING_FAILURE,
+    WOMEN_CLOTHING_LOADING,
+    WOMEN_CLOTHING_SUCCESS,
+    WOMEN_SHOES_FAILURE,
+    WOMEN_SHOES_LAODING,
+    WOMEN_SHOES_SUCCESS
+
+} from "./actionType";
 
 const initState = {
     menClothes : [],
@@ -92,6 +106,7 @@ const initState = {
 
 export const reducer = (state=initState, {type,payload}) => {
     switch(type) {
+        // Cases For MenClothing Data
         case MEN_CLOTHING_LOADING : {
             return {
                 ...state,
@@ -112,6 +127,75 @@ export const reducer = (state=initState, {type,payload}) => {
                 menClothesLoading : false,
                 menClothesError : false,
                 menClothes : [...payload]
+            }
+        }
+        //  Cases For menShoes Data
+        case MEN_SHOES_LOADING : {
+            return {
+                ...state,
+                menShoesLoading : true,
+                menShoesError : false
+            }
+        }
+        case MEN_SHOES_FAILURE : {
+            return{
+                ...state,
+                menShoesLoading : false,
+                menShoesError : true
+            }
+        }
+        case MEN_SHOES_SUCCESS : {
+            return {
+                ...state,
+                menShoesLoading: false,
+                menShoesError : false,
+                menShoes : [...payload]
+            }
+        }
+        // Cases For Women_Clothing Data
+        case WOMEN_CLOTHING_LOADING : {
+            return {
+                ...state,
+                womenClothesLoading : true,
+                womenClothesError : false
+            }
+        }
+        case WOMEN_CLOTHING_FAILURE : {
+            return {
+                ...state,
+                womenClothesLoading : false,
+                womenClothesError : true
+            }
+        }
+        case WOMEN_CLOTHING_SUCCESS : {
+            return {
+                ...state,
+                womenClothesLoading : false,
+                womenClothesError : false,
+                womenClothes : [...payload]
+            }
+        }
+        // Cases Women_Shoes Data
+        case WOMEN_SHOES_LAODING : {
+            return {
+                ...state,
+                womenShoesLoading : true,
+                womenShoesError  : false,
+            }
+        }
+        case WOMEN_SHOES_FAILURE : {
+            return {
+                ...state,
+                womenShoesLoading: false,
+                womenShoesError : true
+            }
+        }
+        case WOMEN_SHOES_SUCCESS : {
+            return {
+                ...state,
+                womenShoesLoading : false,
+                womenShoesError : false,
+                womenShes : [...payload]
             }
         }
         default : return state;

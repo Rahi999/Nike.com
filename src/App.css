@@ -539,6 +539,19 @@
   cursor: pointer;
   margin-top: 70%;
 }
+#divButton:hover{
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+#shopButton:hover{
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+#divButton2:hover{
+  background-color: grey;
+}
+#divButton3:hover{
+  background-color: grey;
+  
+}
 #divButton2{
   background-color: white;
   color: black;
@@ -626,7 +639,7 @@
   }
   #carousalButton{
     width: 200px;
-    background-color:#cc005f ;
+    background-color: black ;
     color: white;
     font-size: 18px;
     border: 0px;
@@ -634,7 +647,10 @@
     cursor: pointer;
 
   }
-
+ #carousalButton:hover{
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  border: 0px; 
+}
 /*---------------------- Carousal CSS ----------------------------*/
 
 #category14{
@@ -711,6 +727,7 @@
       text-decoration: none;
       font-style: inherit;
       font-style: italic;
+      
     }
     #categoryAncer:hover{
        color:grey
@@ -789,6 +806,11 @@
  #mappedBox{
   height: 530px;
   padding: 10px;
+  width: 96%;
+  margin: auto;
+ }
+ #mappedBox:hover{
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
  }
  #mappedBox>img{
   width: 95%;
@@ -980,6 +1002,7 @@
   font-size: 18px;
  }
  #categoryAncer{
-  font-size: 16px;
+  font-size: 13px;
+  font-weight: normal;
  }
 }

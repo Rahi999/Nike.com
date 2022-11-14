@@ -1,4 +1,5 @@
 import { 
+    ADD_TO_CART,
     KIDS_SHOES_FAILURE,
     KIDS_SHOES_LOADING,
      KIDS_SHOES_SUCCESS,
@@ -99,6 +100,13 @@ export const kidsShoesFailureFunction = () => {
 export const kidsShoesSuccessFunction = (payload) => {
     return {
         type : KIDS_SHOES_SUCCESS,
+        payload
+    }
+}
+
+export const addToCart = (payload) => {
+    return {
+        type : ADD_TO_CART,
         payload
     }
 }

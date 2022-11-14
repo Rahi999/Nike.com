@@ -1,4 +1,5 @@
 import { 
+    ADD_TO_CART,
     KIDS_SHOES_FAILURE,
     KIDS_SHOES_LOADING,
     KIDS_SHOES_SUCCESS,
@@ -23,6 +24,7 @@ const initState = {
     womenClothes : [],
     womenShoes : [],
     kidsShoes : [],
+    cartItems: [],
     menClothesLoading : false,
     menClothesError : false,
     menShoesLoading : false,
@@ -222,6 +224,12 @@ export const reducer = (state=initState, {type,payload}) => {
                 kidsShoesLoading : false,
                 kidsShoesError : false,
                 kidsShoes : [...payload]
+            }
+        }
+        case ADD_TO_CART : {
+            return {
+                ...state,
+                cartItems : [...payload]
             }
         }
         default : return state;

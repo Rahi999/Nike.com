@@ -6,11 +6,18 @@ import { styled } from '@mui/material/styles';
 import Rating from '@mui/material/Rating';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import {useDispatch,useSelector} from "react-redux"
+import {addToCart} from "../Redux/AppReducer/action"
+import {useNavigate} from "react-router-dom"
+
 const SingleMenClothes = () => {
   const params = useParams();
   const [SingleMenClothesData,setSingleMenClothesData] = useState({});
   const [loading,setLoading] = useState(false);
   const [error,setError] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [size,setSize] = useState("")
 
   useEffect(() => {
     setLoading(true)
@@ -35,8 +42,26 @@ const SingleMenClothes = () => {
   },
 });
 
+// const {cartItems} = useSelector((state)=> {
+//   return {
+//     cartItems : state.AppReducer.cartItems
+//   }
+// })
+
   const handleCart = () => {
-    alert("Add To Cart Button Working")
+    const payload = {
+      id : SingleMenClothesData.id,
+      description : SingleMenClothesData.description,
+      title : SingleMenClothesData.title,
+      price : SingleMenClothesData.price,
+      image : SingleMenClothesData.image,
+      size : size
+    }
+    var cartItems =   JSON.parse(localStorage.getItem("CartData") || "[]");
+    cartItems.push(payload)
+    localStorage.setItem("CartData",JSON.stringify(cartItems))
+    alert("Product Added To Cart");
+    navigate("/cart");
   }
   return loading ? (<Box id="menClothingContainer"><img width="30%" style={{marginLeft:"30%"}} src="https://i.pinimg.com/originals/b4/4e/22/b44e229598a8bdb7f2f432f246fb0813.gif"  alt="Loading Logo"/></Box>)
   : error ? (<Box id="menClothingContainer"><img width="35%" style={{marginLeft:"30%"}} src="https://gifimage.net/wp-content/uploads/2018/11/something-went-wrong-gif-2.gif" alt="Error Logo" /></Box>)
@@ -61,7 +86,7 @@ const SingleMenClothes = () => {
             <img src={SingleMenClothesData.image} style={{width:"80px",height:"80px"}} />
           </Box>
           <Typography id="h3" style={{textAlign:"left"}}>Select Size</Typography>
-          <select id="select">
+          <select onChange={(e) => setSize(e.target.value)} id="select">
             <option value="">Sizes</option>
             <option value="Extra Small">Extra Small</option>
             <option value="Small">Small</option>

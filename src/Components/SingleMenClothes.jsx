@@ -31,8 +31,7 @@ const SingleMenClothes = () => {
                             console.log(err)   
                             })  
   },[])
-  // console.log(params)
-  // console.log(loading,error,SingleMenClothesData);
+  
   const StyledRating = styled(Rating)({
   '& .MuiRating-iconFilled': {
     color: '#ff6d75',
@@ -41,12 +40,6 @@ const SingleMenClothes = () => {
     color: '#ff3d47',
   },
 });
-
-// const {cartItems} = useSelector((state)=> {
-//   return {
-//     cartItems : state.AppReducer.cartItems
-//   }
-// })
 
   const handleCart = () => {
     const payload = {

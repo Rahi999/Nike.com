@@ -8,7 +8,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import {useDispatch,useSelector} from "react-redux"
 import {addToCart} from "../Redux/AppReducer/action"
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
+
 const SingleMenShoes = () => {
   const params = useParams();
   const [SingleMenClothesData,setSingleMenClothesData] = useState({});

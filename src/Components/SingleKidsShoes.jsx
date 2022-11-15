@@ -46,7 +46,7 @@ const SingleKidsShoes = () => {
     const handleCart = () => {
       if(size) {
         const payload = {
-          id : SingleMenClothesData.id,
+          id : new Date(),
           description : SingleMenClothesData.description,
           title : SingleMenClothesData.title,
           price : SingleMenClothesData.price,
@@ -56,7 +56,6 @@ const SingleKidsShoes = () => {
         var cartItems =   JSON.parse(localStorage.getItem("CartData") || "[]");
         cartItems.push(payload)
         localStorage.setItem("CartData",JSON.stringify(cartItems))
-        alert("Product Added To Cart");
         navigate("/cart");
       }
        else {
@@ -77,7 +76,7 @@ const SingleKidsShoes = () => {
           <Typography id="description">{SingleMenClothesData.description}</Typography>
           <Typography id="title1" >{SingleMenClothesData.title}</Typography>
           <Typography id="color">{SingleMenClothesData.color}</Typography>
-          <Typography id="price">{SingleMenClothesData.price}</Typography>
+          <Typography id="price">MRP : ₹  {SingleMenClothesData.price}</Typography>
           <Typography id="color">incl. of taxes</Typography>
           <Typography id="color">(Also includes all applicable duties)</Typography>
           <Box style={{display:"flex",gap:"20px",marginTop:"20px"}}>

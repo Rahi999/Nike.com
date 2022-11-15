@@ -1,29 +1,35 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import {Box,Typography,Avatar} from "@mui/material"
 
 const Cart = () => {
 
+  const [cart,setCart] = useState([])
 
   const data = JSON.parse(localStorage.getItem("CartData"));
-  console.log(data);
-  
+  useEffect(() =>{
+  setCart(data)
+  },[])
+
+  console.log(cart);
+
   let total = 0;
-  if(data) {
-   total = data.reduce(function (acc, obj) { return acc + +obj.price }, 0);
+  if(cart) {
+   total = cart.reduce(function (acc, obj) { return acc + +obj.price }, 0);
   }
   // console.log(total)
   const handleDelete = (id) => {
-    alert(id);
-    data.filter((value) => value !== id)
+    setCart(cart.filter((item)=> item.id !== id));
+    localStorage.setItem("CartData",JSON.stringify(cart))
+  //  console.log(cart)
   }
   return (
     <Box id="cartContainer">
       <Box id="cartBox">
         {/* Left Box For Cart */}
         <Box id="cartChild1">
-          <Typography id="h3" style={{textAlign:"left"}}>Bag ({data ? data.length : 0})</Typography>
-         {data  ?  <Box id="mappedData">
-          { data ? data && data.map((items) => 
+          <Typography id="h3" style={{textAlign:"left"}}>Bag ({cart ? cart.length : 0})</Typography>
+         {cart  ?  <Box id="mappedcart">
+          { cart ? cart && cart.map((items) => 
           <Box key={items.id} id="cartMappedBox">
             <Box style={{width:"30%",height:"200px"}}>
               <img id="cartImage" src={items.image} /></Box>
@@ -53,7 +59,7 @@ const Cart = () => {
          <br />
          <Box style={{display:"flex",justifyContent:"space-between"}}>
           <Typography id="price">Items (Total)</Typography>
-          <Typography id="price">{data ? data.length : 0}</Typography>
+          <Typography id="price">{cart ? cart.length : 0}</Typography>
          </Box>
          <br />
          <Box style={{display:"flex",justifyContent:"space-between"}}>

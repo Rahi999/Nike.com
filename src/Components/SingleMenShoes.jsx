@@ -46,7 +46,7 @@ const SingleMenShoes = () => {
     const handleCart = () => {
       if(size) {
         const payload = {
-          id : SingleMenClothesData.id,
+          id : new Date(),
           description : SingleMenClothesData.description,
           title : SingleMenClothesData.title,
           price : SingleMenClothesData.price,
@@ -56,7 +56,6 @@ const SingleMenShoes = () => {
         var cartItems =   JSON.parse(localStorage.getItem("CartData") || "[]");
         cartItems.push(payload)
         localStorage.setItem("CartData",JSON.stringify(cartItems))
-        alert("Product Added To Cart");
         navigate("/cart");
       } else {
         alert("Please Select Size")

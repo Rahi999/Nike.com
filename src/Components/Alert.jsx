@@ -13,6 +13,9 @@ export default function Alert({ children, type, message }) {
   const handleClose = (e) => {
     e.preventDefault();
     setIsShow(false);
+    setTimeout(() => {
+      setIsShow(false)
+    },3000)
   };
 
   return (

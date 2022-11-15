@@ -6,7 +6,41 @@
   padding: 0;
   box-sizing: border-box;
 }
+ /* Search Box CSS */
+ .abc {
+  padding: 10px;
+  max-height: 250px;
+  overflow: scroll;
+  position: absolute;
+  background-color: white;
+  z-index: 2;
+  color: black;
+  top: 50px;
+  justify-self: stretch;
+  width: 400px;
+  transition: 700ms ease;
+  box-shadow: 0 4px 6px 1.5px rgba(11, 121, 211, 0.432);
+  overflow-x: hidden;
+  margin-top: 30px;
+}
 
+.searchmap{
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+}
+.searchmap:hover{
+  background-color: #008ecc;
+  color: white;
+}
+.searchbar{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: 700ms ease;
+  
+}
+ /* ------- */
 .container {
   position: absolute;
   margin: auto;
@@ -897,8 +931,9 @@
   height: 100%;
  }
  #cartChild2{
-  width: 100%;
+  width: 90%;
   padding: 20px;
+  height: 100%;
  }
  #mappedData{
   height: 110vh;
@@ -1051,6 +1086,7 @@
     display: block;
     width: 90%;
     height: 100%;
+   
     
   }
   #box1,#box2,#box3,#box4{
@@ -1072,7 +1108,8 @@
    #signUpContainer,
    #loginContainer,
    #cartContainer,
-   #singleProductContainer
+   #singleProductContainer,
+   #searchedContainer
    {
     margin-top: 35%;
   }
@@ -1135,13 +1172,13 @@
    width: 100%;
   }
   #cartChild2{
-    height: 300px;
+    height: 100%;
     width: 100%;
   }
   #mappedData{
   }
   #cartMappedBox{
-    height: 500px;
+    height: 550px;
     display: block;
     padding: 10px;
   }

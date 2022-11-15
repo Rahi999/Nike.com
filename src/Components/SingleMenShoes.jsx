@@ -87,12 +87,12 @@ const SingleMenShoes = () => {
         <Typography id="h3" style={{textAlign:"left"}}>Select Size</Typography>
         <select onChange={(e) => setSize(e.target.value)} id="select">
           <option value="">Sizes</option>
-          <option value="Extra Small">Extra Small</option>
-          <option value="Small">Small</option>
-          <option value="Medium">Medium</option>
-          <option value="Large">Large</option>
-          <option value="Extra Large">Extra Large</option>
-          <option value="XXL">XXL</option>
+          <option value="6 UK">6 UK</option>
+          <option value="7 UK">7 UK</option>
+          <option value="7.5 UK">7.5 UK</option>
+          <option value="8 UK">8 UK</option>
+          <option value="8.5 UK">8.5 UK</option>
+          <option value="9 UK">9 UK</option>
         </select>
         <br />
         <br />

@@ -1,12 +1,43 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import {Box,Input,Typography,Button,TextField,CircularProgress,Autocomplete, Avatar} from "@mui/material";
-import {Link} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
+import axios from "axios"
 
 
 const Navbar = () => {
 
+  const [searchInput, setSearchInput] = useState("");
+  const [ApiData, setApiData] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
+  const navigate = useNavigate()
   const [text,setText] = useState("");
   const name = localStorage.getItem("Name");
+  const handleSearch = () => {
+    localStorage.setItem("searched",text)
+    navigate("/searchedProducts")
+  }
+
+  
+  useEffect(() => {
+    axios.get(`http://localhost:8080/Men_Clothing`).then((r) => {
+      setApiData(r.data);
+    }).catch(()=> null)
+
+
+  }, [searchInput]);
+
+  const searchItems = (searchValue) => {
+    setSearchInput(searchValue);
+    const filterdata = ApiData.filter((item) => {
+      return Object.values(item)
+        .join("")
+        .toLowerCase()
+        .includes(searchInput.toLowerCase());
+    });
+    setFilteredResults(filterdata);
+  };
+  // console.log(searchInput);
+  console.log(filteredResults);
 
   return ( <Box id="navbar">
     <Box id="navabrContainer" columns={{sm:1,md:2,lg:2,xl:2,base:1}} >
@@ -64,9 +95,32 @@ const Navbar = () => {
         <Box style={{display:"flex"}}>
         
         <div title="Search For Products" class="container">
-       <input id="input" type="text" placeholder="Search..." />
-       <div onClick={()=> alert("Search Working")} class="search"></div>
+       <input onChange={(e) => searchItems(e.target.value)} id="input" type="text" placeholder="Search..." />
+       <div onClick={()=> handleSearch()} class="search"></div>
          </div>
+         {filteredResults.length > 0 && (
+          <Box
+            className="abc"
+            display={searchInput.length === 0 ? "none" : "inline"}
+          >
+            {filteredResults.map((item) => {
+              return (
+                <Link id="categoryAncer" to={`/menClothing/${item.id}`} >
+                    <div className="searchmap">
+                  <div style={{ width: "30px", height: "30px" }}>
+                    <img src={item.image} style={{ width: "100%" }}></img>
+                  </div>
+                  {/* <a href={`/${item.category}/${item.title}/${item.id}`}>
+                <p>{item.title}</p>
+              </a> */}
+                  <p>{item.title}</p>
+                </div>
+                </Link>
+              
+              );
+            })}
+          </Box>
+        )}
         
 
         </Box>

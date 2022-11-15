@@ -5,6 +5,10 @@ import { useState } from 'react'
 import Alert from './Alert'
 import axios from "axios"
 import { useDispatch } from 'react-redux'
+import IconButton from '@mui/material/IconButton';
+import Collapse from '@mui/material/Collapse';
+import Button from '@mui/material/Button';
+import CloseIcon from '@mui/icons-material/Close';
  
 const SignUp = () => {
   //https://17ff65.sse.codesandbox.io/NikeSignUp
@@ -19,6 +23,8 @@ const SignUp = () => {
   const dispatch = useDispatch()
   const [signUpLoading,setSignUpLoading] = useState(false);
   const [signUpFailure,setSignUpFailure] = useState(false)
+  const [open, setOpen] = React.useState(true);
+
 
   const handleOnSignUp = () => {
       if(email && password && firstName && lastName) {
@@ -92,6 +98,8 @@ const SignUp = () => {
 
              </Box>
            </Box>
+           
+       
       {signUpSuccess ? <Alert type="success" message="SignUp SuccessFull Login Please" />: null }
        {signupError ?  <Alert type="error" message="SignUp Failed" /> : null}
        {signUpWarning ? <Alert type="warning" message="Please Enter All Details" />  : null}

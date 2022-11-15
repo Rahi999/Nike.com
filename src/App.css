@@ -884,9 +884,58 @@
     font-size: 23px;
     cursor: pointer;
   }
-  
-
 /* ---------------- */
+
+/* Cart Page CSS */
+ #cartBox{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+ }
+ #cartChild1{
+  width: 100%;
+  padding: 20px; 
+  height: 100%;
+ }
+ #cartChild2{
+  width: 100%;
+  padding: 20px;
+ }
+ #mappedData{
+  height: 110vh;
+  overflow: scroll;
+  overflow-x: hidden;
+  gap: 10px;
+ }
+ #cartMappedBox{
+   display: flex;
+   height: 200px;
+   margin-top: 20px;
+   padding: 10px;
+   border-radius: 10px;
+   width: 96%;
+   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   
+ }
+ #cartMappedBox:hover{
+    border: 2px dotted grey;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+ }
+ #cartImage{
+  width: 200px;
+  height: 180px;
+  margin: auto;
+ }
+ #remove{
+  cursor: pointer;
+ }
+ #Cartbox2{
+   height: 200px;
+   padding : 10px;
+   display:flex;
+   justify-content : space-between
+ }
+
+/* --------------- */
 @media  screen and (max-width: 600px) {
    #navabrContainer{
       display: block;
@@ -1079,4 +1128,25 @@
   #textBox2{
     width: 300px;
   }
+  #cartBox{
+    grid-template-columns: repeat(1,1fr);
+  }
+  #cartChild1{
+   width: 100%;
+  }
+  #cartChild2{
+    height: 300px;
+    width: 100%;
+  }
+  #mappedData{
+  }
+  #cartMappedBox{
+    height: 500px;
+    display: block;
+    padding: 10px;
+  }
+ #Cartbox2{
+  height: 300px;
+  width: 300px;
+ }
 }

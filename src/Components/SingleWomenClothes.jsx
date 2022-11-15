@@ -43,19 +43,24 @@ const SingleWomenClothes = () => {
   });
   
     const handleCart = () => {
-      const payload = {
-        id : SingleMenClothesData.id,
-        description : SingleMenClothesData.description,
-        title : SingleMenClothesData.title,
-        price : SingleMenClothesData.price,
-        image : SingleMenClothesData.image,
-        size : size
+      if(size) {
+        const payload = {
+          id : SingleMenClothesData.id,
+          description : SingleMenClothesData.description,
+          title : SingleMenClothesData.title,
+          price : SingleMenClothesData.price,
+          image : SingleMenClothesData.image,
+          size : size
+        }
+        var cartItems =   JSON.parse(localStorage.getItem("CartData") || "[]");
+        cartItems.push(payload)
+        localStorage.setItem("CartData",JSON.stringify(cartItems))
+        alert("Product Added To Cart");
+        navigate("/cart");
+      } else {
+        alert("Please Select Size")
       }
-      var cartItems =   JSON.parse(localStorage.getItem("CartData") || "[]");
-      cartItems.push(payload)
-      localStorage.setItem("CartData",JSON.stringify(cartItems))
-      alert("Product Added To Cart");
-      navigate("/cart");
+      
     }  
   return loading ? (<div id="menClothingContainer"><img width="30%" style={{marginLeft:"30%"}} src="https://i.pinimg.com/originals/b4/4e/22/b44e229598a8bdb7f2f432f246fb0813.gif"  alt="Loading Logo"/></div>)
   : error ? (<div id="menClothingContainer"><img width="35%" style={{marginLeft:"30%"}} src="https://gifimage.net/wp-content/uploads/2018/11/something-went-wrong-gif-2.gif" alt="Error Logo" /></div>)

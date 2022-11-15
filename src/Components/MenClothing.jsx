@@ -130,7 +130,7 @@ const MenClothing = () => {
                  <Typography  id="description">{items.description}</Typography>
                  <Typography id="title">{items.title}</Typography>
                  <Typography id="color">{items.color}</Typography>
-                 <Typography id="price">{items.price}</Typography>
+                 <Typography id="price">MRP : ₹ {items.price}</Typography>
                  
              </Box>
            </Link>

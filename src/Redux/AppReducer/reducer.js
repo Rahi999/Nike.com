@@ -1,5 +1,7 @@
 import { 
     ADD_TO_CART,
+    DECREASE_QUANTITY,
+    INCREASE_QUANTITY,
     KIDS_SHOES_FAILURE,
     KIDS_SHOES_LOADING,
     KIDS_SHOES_SUCCESS,
@@ -9,6 +11,7 @@ import {
     MEN_SHOES_FAILURE,
     MEN_SHOES_LOADING,
     MEN_SHOES_SUCCESS,
+    REMOVE_FROM_CART,
     WOMEN_CLOTHING_FAILURE,
     WOMEN_CLOTHING_LOADING,
     WOMEN_CLOTHING_SUCCESS,
@@ -25,6 +28,7 @@ const initState = {
     womenShoes : [],
     kidsShoes : [],
     cartItems: [],
+    total : 0,
     menClothesLoading : false,
     menClothesError : false,
     menShoesLoading : false,
@@ -227,11 +231,54 @@ export const reducer = (state=initState, {type,payload}) => {
             }
         }
         case ADD_TO_CART : {
-            return {
+            let addedItem = state.menClothes.find((item) => payload === item.id);
+            let existed = state.cartItems.find((item) => payload === item.id);
+            if (existed) {
+              addedItem.quantity += 1;
+      
+              return {
                 ...state,
-                cartItems : [...payload]
+                total: state.total + addedItem.price
+              };
+            } else {
+              addedItem.quantity = 1;
+              let newTotal = state.total + addedItem.price;
+              return {
+                ...state,
+                cartItems : [...state.cartItems, addedItem],
+                total: newTotal
+              };
             }
         }
+        case REMOVE_FROM_CART : {
+            let itemToRemove = state.cartItems.find((item) => payload === item.id);
+            let newCartData = state.cartItems.filter((item) => payload !== item.id);
+            let newTotal = state.total - itemToRemove.price * itemToRemove.quantity;
+            return {
+              ...state,
+              cartItems: newCartData,
+              total: newTotal
+            };
+        }
+        case INCREASE_QUANTITY: {
+            let addedItem = state.cartItems.find((item) => payload === item.id);
+            addedItem.quantity += 1;
+            let newTotal = state.total + addedItem.price;
+            return {
+              ...state,
+              total: newTotal
+            };
+          }
+          case DECREASE_QUANTITY: {
+            let addedItem = state.cartItems.find((item) => payload === item.id);
+            addedItem.quantity -= 1;
+            let newTotal = state.total - addedItem.price;
+            return {
+              ...state,
+              total: newTotal
+            };
+          }
         default : return state;
     }
 }
+// 

@@ -9,6 +9,7 @@
     "@mui/material": "^5.10.13",
     "axios": "^1.1.3",
     "classnames": "^2.3.2",
+    "mdb-react-ui-kit": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-material-ui-carousel": "^3.4.2",

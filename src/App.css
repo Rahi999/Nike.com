@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 
 * {
@@ -971,6 +972,11 @@
  }
 
 /* --------------- */
+
+/* Reciept Page CSS */
+
+
+/* ---------------------- */
 @media  screen and (max-width: 600px) {
    #navabrContainer{
       display: block;

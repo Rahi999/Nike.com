@@ -19,7 +19,7 @@ const Navbar = () => {
 
   
   useEffect(() => {
-    axios.get(`http://localhost:8080/Men_Clothing`).then((r) => {
+    axios.get(`http://localhost:8080/All_Data`).then((r) => {
       setApiData(r.data);
     }).catch(()=> null)
 
@@ -105,8 +105,8 @@ const Navbar = () => {
           >
             {filteredResults.map((item) => {
               return (
-                <Link id="categoryAncer" to={`/menClothing/${item.id}`} >
-                    <div className="searchmap">
+                <Link id="categoryAncer" to={`/searchedProducts/${item.id}`} >
+                    <div className="searchmap" onClick={() => setSearchInput("")}>
                   <div style={{ width: "30px", height: "30px" }}>
                     <img src={item.image} style={{ width: "100%" }}></img>
                   </div>

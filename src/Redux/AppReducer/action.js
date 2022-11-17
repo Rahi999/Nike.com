@@ -1,5 +1,7 @@
 import { 
     ADD_TO_CART,
+    DECREASE_QUANTITY,
+    INCREASE_QUANTITY,
     KIDS_SHOES_FAILURE,
     KIDS_SHOES_LOADING,
      KIDS_SHOES_SUCCESS,
@@ -9,6 +11,7 @@ import {
      MEN_SHOES_FAILURE,
      MEN_SHOES_LOADING,
      MEN_SHOES_SUCCESS,
+     REMOVE_FROM_CART,
      WOMEN_CLOTHING_FAILURE,
      WOMEN_CLOTHING_LOADING,
      WOMEN_CLOTHING_SUCCESS,
@@ -107,6 +110,27 @@ export const kidsShoesSuccessFunction = (payload) => {
 export const addToCart = (payload) => {
     return {
         type : ADD_TO_CART,
+        payload
+    }
+}
+
+export const RemoveFromCart = (payload) => {
+    return {
+        type : REMOVE_FROM_CART,
+        payload
+    }
+}
+
+export const IncreaseQuantity = (payload) => {
+    return {
+        type : INCREASE_QUANTITY,
+        payload
+    }
+}
+
+export const DecreaseQuantity = (payload) => {
+    return {
+        type : DECREASE_QUANTITY,
         payload
     }
 }

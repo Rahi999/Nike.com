@@ -18,6 +18,7 @@ import SingleWomenClothes from "./SingleWomenClothes";
 import SingleWomenShoes from "./SingleWomenShoes"
 import SingleKidsShoes from "./SingleKidsShoes"
 import SearchedProducts from "./SearchProducts"
+import Receipt from './Receipt';
   
 const AllRoutes = () => {
   const name = localStorage.getItem("Name");
@@ -40,7 +41,8 @@ const AllRoutes = () => {
             <Route path="/womenClothing/:id" element={<SingleWomenClothes />} />
             <Route path="/womenShoes/:id" element={<SingleWomenShoes />} />
             <Route path="/kidsShoes/:id" element={<SingleKidsShoes />} />
-            <Route path="/searchedProducts" element={<SearchedProducts />} />
+            <Route path="/searchedProducts/:id" element={<SearchedProducts />} />
+            <Route path="/reciept" element={<Receipt />} />
         </Routes>
     </Box>
   )

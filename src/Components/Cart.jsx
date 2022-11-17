@@ -3,6 +3,7 @@ import {Box,Typography,Avatar,Input} from "@mui/material"
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import axios from "axios"
+import {useNavigate} from "react-router-dom"
 
 const Cart = () => {
 
@@ -14,6 +15,7 @@ const Cart = () => {
   const [phone,setPhone] = useState('');
   const [address,setAddress] = useState('');
   const [code,setCode] = useState('');
+  const navigate = useNavigate()
 
   const data = JSON.parse(localStorage.getItem("CartData"));
   useEffect(() =>{
@@ -45,30 +47,33 @@ const Cart = () => {
   };
   
   const handleAdd = () => {
+    navigate("/reciept")
     //https://17ff65.sse.codesandbox.io/Nike_Products_OrderedBy_Customers
-   if(name && phone && address && code){
-    const payload = {
-      description : cart.map((el) => el.description),
-      title : cart.map((el) => el.title),
-      price : cart.map((el) => el.price),
-      image : cart.map((el) => el.image),
-      Name : name,
-      Phone : phone,
-      Address : address,
-      Pin : code
-    }
-    axios.post("https://17ff65.sse.codesandbox.io/Nike_Products_OrderedBy_Customers",payload)
-    .then((res) => {
-      alert("Order Confirmed")
-      handleClose()
-    })
-    .then((err) => alert("Order Failed"))
+  //  if(name && phone && address && code){
+  //   const payload = {
+  //     description : cart.map((el) => el.description),
+  //     title : cart.map((el) => el.title),
+  //     price : cart.map((el) => el.price),
+  //     image : cart.map((el) => el.image),
+  //     Name : name,
+  //     Phone : phone,
+  //     Address : address,
+  //     Pin : code
+  //   }
+  //   axios.post("https://17ff65.sse.codesandbox.io/Nike_Products_OrderedBy_Customers",payload)
+  //   .then((res) => {
+  //     alert("Order Confirmed")
+  //     handleClose()
+      
+  //   })
+  //   .then((err) => alert("Order Failed"))
    
-   } else {
-    alert("Please Enter All Details")
-   }
+  //  } else {
+  //   alert("Please Enter All Details")
+  //  }
    
   }
+  
   return (
     <Box id="cartContainer">
       <Box id="cartBox">

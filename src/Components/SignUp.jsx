@@ -38,7 +38,7 @@ const SignUp = () => {
           LastName : lastName,
           status : false 
         }
-        axios.post("https://17ff65.sse.codesandbox.io/NikeSignUp",payload)
+        axios.post("https://intermediate-little-dibble.glitch.me/NikeSignUp",payload)
         .then((resolve) => {
           setSignUpLoading(false);
           setSignUpSuccess(true);

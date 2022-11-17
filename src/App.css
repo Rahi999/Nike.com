@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+body{
+  width: 98%;
+  margin: auto;
+}
 
 * {
   margin: 0;
@@ -908,6 +912,13 @@
   #title1{
     font-size: 30px;
     color: black;
+  }
+  #cartLength {
+    border-radius: 50%;
+    background-color:black;
+    color: white;
+    padding: 6px;
+    font-family: 'Courier New', Courier, monospace;
   }
   #cartButton{
     width: 300px;

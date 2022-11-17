@@ -29,7 +29,7 @@ const Login = () => {
 
   useEffect(() => {
     setDataLoading(true)
-   axios.get("https://17ff65.sse.codesandbox.io/NikeSignUp")
+   axios.get("https://intermediate-little-dibble.glitch.me/NikeSignUp")
    .then((res) => {
     setLoginData(res.data)
     setDataLoading(false)
@@ -55,7 +55,10 @@ const Login = () => {
       }
       setLoginError(true);
       setLoginStatus(false);
-      setOpenError(true)
+      setOpenError(true);
+      setTimeout(() => {
+         navigate("/")
+      },3000)
     } else {
       setLoginWarning(true);
       setOpenWarning(true)

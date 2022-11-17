@@ -4,6 +4,10 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import axios from "axios"
 import {useNavigate} from "react-router-dom"
+import Alert from '@mui/material/Alert';
+import IconButton from '@mui/material/IconButton';
+import Collapse from '@mui/material/Collapse';
+import CloseIcon from '@mui/icons-material/Close';
 
 const Cart = () => {
 
@@ -18,6 +22,9 @@ const Cart = () => {
   const [address,setAddress] = useState('');
   const [code,setCode] = useState('');
   const navigate = useNavigate()
+  const [openSuccess, setOpenSuccess] = React.useState(false);
+  const [openOrderSuccess, setOpenOrderSuccess] = React.useState(false);
+
 
   const data = JSON.parse(localStorage.getItem("CartData"));
   useEffect(() =>{
@@ -47,13 +54,21 @@ const Cart = () => {
     boxShadow: 24,
     p: 4,
   };
-  
+  // Storing The Current Date And Current Time When User Confirming the Order..
+
+  let current = new Date();
+  let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+  let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+  let dateTime = cDate + ' ' + cTime;
+  console.log(dateTime);
   const handleAdd = () => {
    
-    https://17ff65.sse.codesandbox.io/Nike_Products_OrderedBy_Customers
+    // https://17ff65.sse.codesandbox.io/Nike_Products_OrderedBy_Customers
    if(name && phone && address && code){
-    setLoading(true)
+    setLoading(true);
+    
     const payload = {
+      date : dateTime,
       description : cart.map((el) => el.description),
       title : cart.map((el) => el.title),
       price : cart.map((el) => el.price),
@@ -63,29 +78,57 @@ const Cart = () => {
       Address : address,
       Pin : code
     }
-    axios.post("https://17ff65.sse.codesandbox.io/Nike_Products_OrderedBy_Customers",payload)
+    axios.post("https://intermediate-little-dibble.glitch.me/Nike_Products_OrderedBy_Customers",payload)
     .then((res) => {
-      alert("Order Confirmed");
+      // alert("Order Confirmed");
+      setOpenOrderSuccess(true)
       localStorage.setItem('Name',name);
       localStorage.setItem('Address',address);
       localStorage.setItem('Total',total);
       setLoading(false)
       handleClose();
-      navigate("/reciept")
+      // navigate("/reciept")
+      setTimeout(()=> {
+       navigate("/reciept")
+      },3000 )
       
     })
     .then((err) => setError(true))
    
    } else {
-    alert("Please Enter All Details")
+    setOpenSuccess(true)
    }
    
   }
   
   return (
     <Box id="cartContainer">
+       <Box sx={{ width: '60%',margin:"auto",fontSize:"22px" }}>
+      <Collapse in={openOrderSuccess}>
+        <Alert severity="success" variant="filled"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="medium"
+              onClick={() => {
+                setOpenOrderSuccess(false);
+                navigate("/reciept")
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2,fontSize:"20px" }}
+        >
+          Your Order Have Been Confirmed, Close to See the Receipt...
+        </Alert>
+      </Collapse>
+      
+    </Box>
       <Box id="cartBox">
         {/* Left Box For Cart */}
+
         <Box id="cartChild1">
           <Typography id="h3" style={{textAlign:"left"}}>Bag ({cart ? cart.length : 0})</Typography>
          {cart  ?  <Box id="mappedcart">
@@ -158,7 +201,29 @@ const Cart = () => {
           <Input onChange={(e) => setAddress(e.target.value)} id="signUpInput" placeholder='Address'/> <br /> <br />
           <Typography>Please Enter Pin/Zip Code</Typography> 
           <Input onChange={(e) => setCode(e.target.value)} id="signUpInput" placeholder='Pin/Zip Code' type="number"/> <br /> <br />
-          <button onClick={() => handleAdd()} id="signupButton">{loading ? "Proccessing..." : error ? "Failed" : "CONFIRM"}</button>
+          <Box sx={{ width: '100%',margin:"auto",fontSize:"22px" }}>
+      <Collapse in={openSuccess}>
+        <Alert severity="warning" variant="filled"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="medium"
+              onClick={() => {
+                setOpenSuccess(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2,fontSize:"16px" }}
+        >
+          Please Enter All Details
+        </Alert>
+      </Collapse>
+      
+    </Box>
+          <button onClick={() => handleAdd()} id="signupButton">{loading ? "CONFIRMING ORDER..." : error ? "Failed" : "CONFIRM"}</button>
         
         </Box>
       </Modal>

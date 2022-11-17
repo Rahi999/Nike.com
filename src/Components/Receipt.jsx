@@ -8,6 +8,11 @@ const Receipt = () => {
   const name = localStorage.getItem("Name");
   const address = localStorage.getItem("Address");
   const total = localStorage.getItem("Total");
+  let current = new Date();
+  let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+  let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+  let dateTime = cDate + ' ' + cTime;
+  // console.log(dateTime);
 
   return (
     <Box id="menClothingContainer" style={{backgroundColor:"#ffe8d2",padding:"20px"}}>
@@ -38,7 +43,7 @@ const Receipt = () => {
               </thead>
               <tbody>
                 <td>
-                  <tr><Typography style={{fontSize:"22px",fontFamily:"Monospace", width:"100px",marginLeft:"50px"  }}>22 June 2022</Typography></tr>
+                  <tr><Typography style={{fontSize:"22px",fontFamily:"Monospace", width:"100px",marginLeft:"50px"  }}>{dateTime}</Typography></tr>
                 </td>
                 <td>
                   <tr>

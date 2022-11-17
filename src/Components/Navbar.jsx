@@ -2,6 +2,9 @@ import React, { useState,useEffect } from 'react'
 import {Box,Input,Typography,Button,TextField,CircularProgress,Autocomplete, Avatar} from "@mui/material";
 import {Link,useNavigate} from "react-router-dom"
 import axios from "axios"
+import Backdrop from '@mui/material/Backdrop';
+import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
 
 
 const Navbar = () => {
@@ -11,7 +14,47 @@ const Navbar = () => {
   const [filteredResults, setFilteredResults] = useState([]);
   const navigate = useNavigate()
   const [text,setText] = useState("");
+  const [openMenClothing, setOpenMenClothing] = React.useState(false);
+  const handleOpenMenClothing = () => setOpenMenClothing(true);
+  const handleCloseMenClothing = () => setOpenMenClothing(false);
+  const [openSecond,setOpenSecond] = useState(false);
+  const handleOpenSecond  = () => setOpenSecond(true);
+  const handleCloseSecond = () => setOpenSecond(false);
+  const [openThird,setOpenThird] = useState(false);
+  const handleOpenThird = () => setOpenThird(true);
+  const handleCloseThird = () => setOpenThird(false);
+  const [openFourth,setOpenFourth] = useState(false);
+  const handleOpenFourth = () => setOpenFourth(true);
+  const handleCloseFourth = () => setOpenFourth(false);
+
+  const [mcd,setMcd] = useState('');
+  const [mct,setMct] = useState('');
+  const [mci,setMci] = useState('');
+  const [mcc,setMcc] = useState('');
+  const [mcp,setMcp] = useState('');
+  const [mcs,setMcs] = useState('');
+  const [loading,setLoading] = useState(false);
+  const [error,setError] = useState(false)
+ 
+  
+
   const name = localStorage.getItem("First_Name");
+  const data = JSON.parse(localStorage.getItem("CartData"));
+
+  
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
+
   const handleSearch = () => {
     localStorage.setItem("searched",text)
     navigate("/searchedProducts")
@@ -37,8 +80,104 @@ const Navbar = () => {
     setFilteredResults(filterdata);
   };
   // console.log(searchInput);
-  console.log(filteredResults);
+  // console.log(filteredResults);
 
+  const handleAddMenClothes = () => {
+          setLoading(true)
+      const payload = {
+         sellerName : mcs,
+         description : mcd,
+         title : mct,
+         price : mcp,
+         image : mci,
+         color : mcc
+      }
+      axios.post("http://localhost:8080/Men_Clothing",payload)
+      .then((res) => {
+        setLoading(false);
+        handleCloseMenClothing();
+        setMcs('');
+        setMcd('');
+        setMct('');
+        setMcp('');
+        setMci('');
+        setMcc('');
+      })
+      .catch((err) => setError(true))  
+      
+  }
+  
+  const handleAddMenShoes = () => {
+    setLoading(true)
+    const payload = {
+       sellerName : mcs,
+       description : mcd,
+       title : mct,
+       price : mcp,
+       image : mci,
+       color : mcc
+    }
+    axios.post("http://localhost:8080/Men_Shoes",payload)
+    .then((res) => {
+      setLoading(false);
+      handleCloseSecond();
+      setMcs('');
+      setMcd('');
+      setMct('');
+      setMcp('');
+      setMci('');
+      setMcc('');
+    })
+    .catch((err) => setError(true))  
+  }
+
+  const handleAddWomenClothes = () => {
+    setLoading(false)
+    const payload = {
+       sellerName : mcs,
+       description : mcd,
+       title : mct,
+       price : mcp,
+       image : mci,
+       color : mcc
+    }
+    axios.post("http://localhost:8080/Women_Clothes",payload)
+    .then((res) => {
+      setLoading(false);
+      handleCloseThird();
+      setMcs('');
+      setMcd('');
+      setMct('');
+      setMcp('');
+      setMci('');
+      setMcc('');
+    })
+    .catch((err) => setError(true))  
+  }
+  
+  const handleAddWomenShoes = () => {
+    setLoading(true)
+    const payload = {
+       sellerName : mcs,
+       description : mcd,
+       title : mct,
+       price : mcp,
+       image : mci,
+       color : mcc
+    }
+    axios.post("http://localhost:8080/Women_shoes",payload)
+    .then((res) => {
+      setLoading(false);
+      handleCloseFourth();
+      setMcs('');
+      setMcd('');
+      setMct('');
+      setMcp('');
+      setMci('');
+      setMcc('');
+    })
+    .catch((err) => setError(true))  
+  }
   return ( <Box id="navbar">
     <Box id="navabrContainer" columns={{sm:1,md:2,lg:2,xl:2,base:1}} >
       <Box id="firstDiv" >
@@ -79,9 +218,214 @@ const Navbar = () => {
        <Box class="dropdown">
           <Typography class="dropbtn">Sale</Typography>
             <Box class="dropdown-content">
-              <Link to="">Men's Products</Link>
-              <Link to="">Women's Products</Link>
-              <Link to="">Kids's Products</Link>
+              <Link to="">
+                {/* Men's Clothing Sale Category */}
+      <div>
+      <Button onClick={handleOpenMenClothing}>Men's Clothing</Button>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={openMenClothing}
+        onClose={handleCloseMenClothing}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={openMenClothing}>
+          <Box sx={style}>
+            <Typography id="transition-modal-title" variant="h6" component="h2">
+              Men's Clothes product Sale
+            </Typography>
+            <br />
+           <Typography>Seller's Name</Typography>
+           <Input id="signUpInput" onChange={(e) => setMcs(e.target.value)} placeholder="Seller's Name" />
+            <br />
+            <br />
+            <Typography>Product Name/Titel</Typography>
+            <Input id="signUpInput" onChange={(e) => setMct(e.target.value)} placeholder="Product Title.." />
+            <br />
+            <br />
+            <Typography>Product's Description</Typography>
+            <Input id="signUpInput" onChange={(e) => setMcd(e.target.value)} placeholder="Product Description..." />
+            <br />
+            <br />
+            <Typography>Product Price</Typography>
+            <Input id="signUpInput" onChange={(e) => setMcp(e.target.value)} placeholder="Price..." />
+            <br />
+            <br />
+            <Typography>Product Image URL</Typography>
+            <Input id="signUpInput" onChange={(e) => setMci(e.target.value)} placeholder="Image URL..." />
+            <br />
+            <br />
+            <Typography>Product Colors</Typography>
+            <Input id="signUpInput" onChange={(e) => setMcc(e.target.value)} placeholder="Colors..." />
+            <br />
+            <br />
+            <button onClick={() => handleAddMenClothes()} id="signupButton">{loading ? "Adding Product..." : error ? "Failed" : "Add Product"}</button>
+          </Box>
+        </Fade>
+      </Modal>
+    </div>
+    {/* Men's Shoes Sale Category */}
+                 </Link>
+              <Link to="">
+              <div>
+      <Button onClick={handleOpenSecond}>Men's Shoes</Button>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={openSecond}
+        onClose={handleCloseSecond}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={openSecond}>
+          <Box sx={style}>
+          <Typography id="transition-modal-title" variant="h6" component="h2">
+              Men's Shoes product Sale
+            </Typography>
+            <br />
+           <Typography>Seller's Name</Typography>
+           <Input id="signUpInput" onChange={(e) => setMcs(e.target.value)} placeholder="Seller's Name" />
+            <br />
+            <br />
+            <Typography>Product Name/Titel</Typography>
+            <Input id="signUpInput" onChange={(e) => setMct(e.target.value)} placeholder="Product Title.." />
+            <br />
+            <br />
+            <Typography>Product's Description</Typography>
+            <Input id="signUpInput" onChange={(e) => setMcd(e.target.value)} placeholder="Product Description..." />
+            <br />
+            <br />
+            <Typography>Product Price</Typography>
+            <Input id="signUpInput" onChange={(e) => setMcp(e.target.value)} placeholder="Price..." />
+            <br />
+            <br />
+            <Typography>Product Image URL</Typography>
+            <Input id="signUpInput" onChange={(e) => setMci(e.target.value)} placeholder="Image URL..." />
+            <br />
+            <br />
+            <Typography>Product Colors</Typography>
+            <Input id="signUpInput" onChange={(e) => setMcc(e.target.value)} placeholder="Colors..." />
+            <br />
+            <br />
+            <button onClick={() => handleAddMenShoes()} id="signupButton">{loading ? "Adding Product..." : error ? "Failed" : "Add Product"}</button>
+          </Box>
+        </Fade>
+      </Modal>
+    </div>
+              </Link>
+                  
+    {/* Women's Clothes Sale Category */}
+              <Link to="">
+              <div>
+      <Button onClick={handleOpenThird}>Women's Clothing</Button>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={openThird}
+        onClose={handleCloseThird}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={openThird}>
+          <Box sx={style}>
+          <Typography id="transition-modal-title" variant="h6" component="h2">
+              Women's Cloths Product Sale
+            </Typography>
+            <br />
+           <Typography>Seller's Name</Typography>
+           <Input id="signUpInput" onChange={(e) => setMcs(e.target.value)} placeholder="Seller's Name" />
+            <br />
+            <br />
+            <Typography>Product Name/Titel</Typography>
+            <Input id="signUpInput" onChange={(e) => setMct(e.target.value)} placeholder="Product Title.." />
+            <br />
+            <br />
+            <Typography>Product's Description</Typography>
+            <Input id="signUpInput" onChange={(e) => setMcd(e.target.value)} placeholder="Product Description..." />
+            <br />
+            <br />
+            <Typography>Product Price</Typography>
+            <Input id="signUpInput" onChange={(e) => setMcp(e.target.value)} placeholder="Price..." />
+            <br />
+            <br />
+            <Typography>Product Image URL</Typography>
+            <Input id="signUpInput" onChange={(e) => setMci(e.target.value)} placeholder="Image URL..." />
+            <br />
+            <br />
+            <Typography>Product Colors</Typography>
+            <Input id="signUpInput" onChange={(e) => setMcc(e.target.value)} placeholder="Colors..." />
+            <br />
+            <br />
+            <button onClick={() => handleAddWomenClothes()} id="signupButton">{loading ? "Adding Product..." : error ? "Failed" : "Add Product"}</button>
+          </Box>
+        </Fade>
+      </Modal>
+    </div>
+    </Link>
+    {/* Womens Shoes Sale */}
+              <Link to="">
+              <div>
+      <Button onClick={handleOpenFourth}>Women's Shoes</Button>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={openFourth}
+        onClose={handleCloseFourth}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={openFourth}>
+          <Box sx={style}>
+          <Typography id="transition-modal-title" variant="h6" component="h2">
+              Women's Shoes Product Sale
+            </Typography>
+            <br />
+           <Typography>Seller's Name</Typography>
+           <Input id="signUpInput" onChange={(e) => setMcs(e.target.value)} placeholder="Seller's Name" />
+            <br />
+            <br />
+            <Typography>Product Name/Titel</Typography>
+            <Input id="signUpInput" onChange={(e) => setMct(e.target.value)} placeholder="Product Title.." />
+            <br />
+            <br />
+            <Typography>Product's Description</Typography>
+            <Input id="signUpInput" onChange={(e) => setMcd(e.target.value)} placeholder="Product Description..." />
+            <br />
+            <br />
+            <Typography>Product Price</Typography>
+            <Input id="signUpInput" onChange={(e) => setMcp(e.target.value)} placeholder="Price..." />
+            <br />
+            <br />
+            <Typography>Product Image URL</Typography>
+            <Input id="signUpInput" onChange={(e) => setMci(e.target.value)} placeholder="Image URL..." />
+            <br />
+            <br />
+            <Typography>Product Colors</Typography>
+            <Input id="signUpInput" onChange={(e) => setMcc(e.target.value)} placeholder="Colors..." />
+            <br />
+            <br />
+            <button onClick={() => handleAddWomenShoes()} id="signupButton">{loading ? "Adding Product..." : error ? "Failed" : "Add Product"}</button>
+          </Box>
+        </Fade>
+      </Modal>
+    </div>
+              </Link>
+
+              {/* Kids's Shoes Sale Category */}
+
             </Box>
        </Box>
       </Box>
@@ -132,9 +476,11 @@ const Navbar = () => {
             <Box class="dropdown-content">
               <Link to="/signUp">SignUp/{name ? name : "SignIn"} </Link>
               <Link to="/login">Login</Link>
-              <Link to="/cart">Cart</Link>
+              <Link to="/cart">Cart <span id="cartLength">{data ? data.length : "0"}</span></Link>
               <Link to="/cart">Wishlist</Link>
-              <Link to="/">HomePage</Link>
+              <Link to="/">Home</Link>
+              <a href="#">Users List</a>
+              <a href="#">Admin</a>
             </Box>
        </Box>
       </Box>
@@ -145,5 +491,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
-

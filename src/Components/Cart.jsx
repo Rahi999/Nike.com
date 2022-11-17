@@ -140,7 +140,7 @@ const Cart = () => {
          {/* Modal Goes Here */}
 
          <Box>
-      <Button disabled={cart.length === 0} id="cartButton" onClick={handleOpen}>Confirm Order</Button>
+      <Button disabled={cart ? cart.length === 0 : null} id="cartButton" onClick={handleOpen}>Confirm Order</Button>
       <Modal
         keepMounted
         open={open}
@@ -159,6 +159,7 @@ const Cart = () => {
           <Typography>Please Enter Pin/Zip Code</Typography> 
           <Input onChange={(e) => setCode(e.target.value)} id="signUpInput" placeholder='Pin/Zip Code' type="number"/> <br /> <br />
           <button onClick={() => handleAdd()} id="signupButton">{loading ? "Proccessing..." : error ? "Failed" : "CONFIRM"}</button>
+        
         </Box>
       </Modal>
     </Box>

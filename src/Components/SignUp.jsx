@@ -2,9 +2,10 @@ import React from 'react'
 import {Box,Input,Typography,Avatar,Select } from "@mui/material"
 import {Link, useNavigate} from "react-router-dom"
 import { useState } from 'react'
-import Alert from './Alert'
+// import Alert from './Alert'
 import axios from "axios"
 import { useDispatch } from 'react-redux'
+import Alert from '@mui/material/Alert';
 import IconButton from '@mui/material/IconButton';
 import Collapse from '@mui/material/Collapse';
 import Button from '@mui/material/Button';
@@ -23,7 +24,8 @@ const SignUp = () => {
   const dispatch = useDispatch()
   const [signUpLoading,setSignUpLoading] = useState(false);
   const [signUpFailure,setSignUpFailure] = useState(false)
-  const [open, setOpen] = React.useState(true);
+  const [openSuccess, setOpenSuccess] = React.useState(false);
+
 
 
   const handleOnSignUp = () => {
@@ -40,18 +42,20 @@ const SignUp = () => {
         .then((resolve) => {
           setSignUpLoading(false);
           setSignUpSuccess(true);
-          localStorage.setItem("Name",firstName);
+          localStorage.setItem("First_Name",firstName);
           navigate("/login")
         })
         .catch((reject) => {
            setSignUpFailure(true);
            setSignUpError(true);
-           navigate("/signUp")
+           navigate("/signUp");
         })
         
       }
       else if(!email || !password || !firstName || !lastName) {
         setSignUpWarning(true);
+        setOpenSuccess(true);
+
       } else {
         setSignUpError(true)
       }
@@ -98,11 +102,32 @@ const SignUp = () => {
 
              </Box>
            </Box>
-           
+           <Box sx={{ width: '60%',margin:"auto",fontSize:"22px" }}>
+      <Collapse in={openSuccess}>
+        <Alert severity="warning" variant="filled"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="medium"
+              onClick={() => {
+                setOpenSuccess(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2,fontSize:"22px" }}
+        >
+          Please Enter All Details
+        </Alert>
+      </Collapse>
+      
+    </Box>
        
-      {signUpSuccess ? <Alert type="success" message="SignUp SuccessFull Login Please" />: null }
+      {/* {signUpSuccess ? <Alert type="success" message="SignUp SuccessFull Login Please" />: null }
        {signupError ?  <Alert type="error" message="SignUp Failed" /> : null}
-       {signUpWarning ? <Alert type="warning" message="Please Enter All Details" />  : null}
+       {signUpWarning ? <Alert type="warning" message="Please Enter All Details" />  : null} */}
     </Box>
   )
 }

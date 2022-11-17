@@ -11,7 +11,7 @@ const Navbar = () => {
   const [filteredResults, setFilteredResults] = useState([]);
   const navigate = useNavigate()
   const [text,setText] = useState("");
-  const name = localStorage.getItem("Name");
+  const name = localStorage.getItem("First_Name");
   const handleSearch = () => {
     localStorage.setItem("searched",text)
     navigate("/searchedProducts")
@@ -92,7 +92,7 @@ const Navbar = () => {
 
         {/* Search Bar  */}
 
-        <Box style={{display:"flex"}}>
+        <Box style={{display:"flex"}} >
         
         <div title="Search For Products" class="container">
        <input onChange={(e) => searchItems(e.target.value)} id="input" type="text" placeholder="Search..." />

@@ -3,8 +3,12 @@ import {Box,Input,Typography} from "@mui/material"
 import {Link, useNavigate} from "react-router-dom"
 import { useSelector } from 'react-redux'
 import axios from "axios";
-import Alert from "./Alert";
-
+import Alert from '@mui/material/Alert';
+import IconButton from '@mui/material/IconButton';
+import Collapse from '@mui/material/Collapse';
+import Button from '@mui/material/Button';
+import CloseIcon from '@mui/icons-material/Close';
+ 
 const Login = () => {
   // https://17ff65.sse.codesandbox.io/NikeLogin;
   const navigate = useNavigate()
@@ -18,6 +22,10 @@ const Login = () => {
   const [loginStatus,setLoginStatus] = useState(false);
   const [dataloading,setDataLoading] = useState(false);
   const [dataError,setDataError] = useState(false);
+  const [openSuccess, setOpenSuccess] = React.useState(false);
+  const [openWarning, setOpenWarning] = React.useState(false);
+  const [openError, setOpenError] = React.useState(false);
+
 
   useEffect(() => {
     setDataLoading(true)
@@ -40,14 +48,17 @@ const Login = () => {
         if(email === loginData[i].Email && password === loginData[i].Password){
           setLoginSuccess(true);
           setLoginStatus(false);
-          alert("You're Successfully Logged In. Start Shopping ")
+          // alert("You're Successfully Logged In. Start Shopping ")
+          setOpenSuccess(true)
           // console.log(loginData[i].Email,email,loginData[i].Password,password)
         } 
       }
       setLoginError(true);
       setLoginStatus(false);
+      setOpenError(true)
     } else {
       setLoginWarning(true);
+      setOpenWarning(true)
     }
   }
   
@@ -59,6 +70,7 @@ const Login = () => {
                    width="20%" /></Box>
               <Box>
                 <Typography style={{fontWeight:"bold"}} id="h3">YOUR ACCOUNT FOR EVERYTHING NIKE</Typography>
+                <Typography style={{color:"grey",fontSize:"20px"}} id="h3">Please Login With Same Details</Typography>
               </Box>
               <br /><br />
               <Box>
@@ -82,9 +94,85 @@ const Login = () => {
 
              </Box>
            </Box>
-           {loginSuccess ? <Alert type="success" message="You're Successfully Logged In. Start Shopping" /> : null}
+           {/* Success Alert */}
+
+           <Box sx={{ width: '60%',margin:"auto",fontSize:"22px" }}>
+      <Collapse in={openSuccess}>
+        <Alert severity="success" variant="filled"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="medium"
+              onClick={() => {
+                setOpenSuccess(false);
+                navigate("/")
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2,fontSize:"20px" }}
+        >
+          Login SuccessFull. Close to Continue Shopping...
+        </Alert>
+      </Collapse>
+      
+    </Box>
+
+           {/* Warning Alert */}
+           <Box sx={{ width: '60%',margin:"auto",fontSize:"22px" }}>
+      <Collapse in={openWarning}>
+        <Alert severity="warning" variant="filled"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="medium"
+              onClick={() => {
+                setOpenWarning(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2,fontSize:"20px" }}
+        >
+          Please Enter All Details
+        </Alert>
+      </Collapse>
+      
+    </Box>
+
+
+           {/* Error Alert */}
+
+           <Box sx={{ width: '60%',margin:"auto",fontSize:"22px" }}>
+      <Collapse in={openError}>
+        <Alert severity="error" variant="filled"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="medium"
+              onClick={() => {
+                setOpenError(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2,fontSize:"20px" }}
+        >
+          Incorrect Details, Please Enter Correct Details
+        </Alert>
+      </Collapse>
+      
+    </Box>
+
+           {/* {loginSuccess ? <Alert type="success" message="You're Successfully Logged In. Start Shopping" /> : null}
            {loginError ? <Alert type="error" message="Details Didn't Matched Or Server Closed. Please Try Again." /> : null}
-           {loginWarning ? <Alert type="warning" message="Please Enter All Details" /> : null}
+           {loginWarning ? <Alert type="warning" message="Please Enter All Details" /> : null} */}
     </Box>
   )
 }

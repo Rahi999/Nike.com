@@ -38,10 +38,7 @@ const Home = () => {
     </div>
   </div>
   </div>
-        <Link to="/kidsShoes">
-          <img id='kidsImage' src="https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/w_981,c_limit/2bb48328-a124-4683-b785-cadae17e8eea/nike-just-do-it.jpg" alt="Kids"/>
-        </Link>
-        <Box style={{
+  <Box style={{
           padding: "5%",
           textAlign:"Center"
         }}>
@@ -50,12 +47,11 @@ const Home = () => {
           <Typography id="h3">This holiday, give more than a gift. give the joy of Possiblity. Inspire a specisal someone to chase that runners high.</Typography>
           <Typography id="h3">To dance like nobody's watching.</Typography>
           <Typography id="h3">Not sure What to gift? Keep Scrolling For Some Tips.</Typography>
-           <Link to="/menClothing"><button id="shopButton">Shop</button></Link>
-           <Link to="/menShoes"><button id="shopButton">Explore More Gifts</button></Link>
+           <Link to="/menShoes"><button id="shopButton">Shop</button></Link>
+           <Link to="/menClothing"><button id="shopButton">Explore More Gifts</button></Link>
            
         </Box>
-
-        <Box>
+  <Box>
           <Typography id="h3" style={{textAlign:"left",fontSize:"30px"}}>Featured</Typography>
           <Box id="categoryBox">
             <Box id="category1"><Link to="/womenClothing"><button id="divButton">Gifts For Her</button></Link></Box>
@@ -63,6 +59,13 @@ const Home = () => {
             <Box id="category3"><Link to="/kidsShoes"><button id="divButton">Gifts For Kids</button></Link></Box>
           </Box>
         </Box>
+        <br />
+        <Link to="/menShoes">
+          <img id='kidsImage' src="https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/w_981,c_limit/80fd8e85-5db5-4231-bbe7-f17dc933b797/nike-just-do-it.jpg" alt="Kids"/>
+        </Link>
+        
+
+        
 
         <Box style={{
           marginTop:"80px"
@@ -167,8 +170,8 @@ const Home = () => {
           <Typography id="h3" style={{textAlign:"left",fontSize:"30px"}}>Kids'</Typography>
             <Link  id="bottomLink" to="/kidsShoes">Infant & Toodler Shoes</Link>
             <Link  id="bottomLink" to="/kidsShoes">Kids's Shoes</Link>
-            <Link  id="bottomLink" to="/wokidsShoes">Kids's Jordan Shoes</Link>
-            <Link  id="bottomLink" to="/wokidsShoes">Kids's Basketball Shoes</Link>
+            <Link  id="bottomLink" to="/kidsShoes">Kids's Jordan Shoes</Link>
+            <Link  id="bottomLink" to="/kidsShoes">Kids's Basketball Shoes</Link>
           </Box>
         </Box>
       </Box>

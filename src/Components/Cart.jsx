@@ -8,6 +8,8 @@ import {useNavigate} from "react-router-dom"
 const Cart = () => {
 
   const [cart,setCart] = useState([]);
+  const [loading,setLoading] = useState(false);
+  const [error,setError] = useState(false);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -28,7 +30,7 @@ const Cart = () => {
   if(cart) {
    total = cart.reduce(function (acc, obj) { return acc + +obj.price }, 0);
   }
-  // console.log(total)
+  console.log(total)
   const handleDelete = (id) => {
     setCart(cart.filter((item)=> item.id !== id));
     localStorage.setItem("CartData",JSON.stringify(cart))
@@ -47,30 +49,36 @@ const Cart = () => {
   };
   
   const handleAdd = () => {
-    navigate("/reciept")
-    //https://17ff65.sse.codesandbox.io/Nike_Products_OrderedBy_Customers
-  //  if(name && phone && address && code){
-  //   const payload = {
-  //     description : cart.map((el) => el.description),
-  //     title : cart.map((el) => el.title),
-  //     price : cart.map((el) => el.price),
-  //     image : cart.map((el) => el.image),
-  //     Name : name,
-  //     Phone : phone,
-  //     Address : address,
-  //     Pin : code
-  //   }
-  //   axios.post("https://17ff65.sse.codesandbox.io/Nike_Products_OrderedBy_Customers",payload)
-  //   .then((res) => {
-  //     alert("Order Confirmed")
-  //     handleClose()
-      
-  //   })
-  //   .then((err) => alert("Order Failed"))
    
-  //  } else {
-  //   alert("Please Enter All Details")
-  //  }
+    https://17ff65.sse.codesandbox.io/Nike_Products_OrderedBy_Customers
+   if(name && phone && address && code){
+    setLoading(true)
+    const payload = {
+      description : cart.map((el) => el.description),
+      title : cart.map((el) => el.title),
+      price : cart.map((el) => el.price),
+      image : cart.map((el) => el.image),
+      Name : name,
+      Phone : phone,
+      Address : address,
+      Pin : code
+    }
+    axios.post("https://17ff65.sse.codesandbox.io/Nike_Products_OrderedBy_Customers",payload)
+    .then((res) => {
+      alert("Order Confirmed");
+      localStorage.setItem('Name',name);
+      localStorage.setItem('Address',address);
+      localStorage.setItem('Total',total);
+      setLoading(false)
+      handleClose();
+      navigate("/reciept")
+      
+    })
+    .then((err) => setError(true))
+   
+   } else {
+    alert("Please Enter All Details")
+   }
    
   }
   
@@ -150,7 +158,7 @@ const Cart = () => {
           <Input onChange={(e) => setAddress(e.target.value)} id="signUpInput" placeholder='Address'/> <br /> <br />
           <Typography>Please Enter Pin/Zip Code</Typography> 
           <Input onChange={(e) => setCode(e.target.value)} id="signUpInput" placeholder='Pin/Zip Code' type="number"/> <br /> <br />
-          <button onClick={() => handleAdd()} id="signupButton">Confirm</button>
+          <button onClick={() => handleAdd()} id="signupButton">{loading ? "Proccessing..." : error ? "Failed" : "CONFIRM"}</button>
         </Box>
       </Modal>
     </Box>

@@ -27,11 +27,16 @@ const SignUp = () => {
   const [openSuccess, setOpenSuccess] = React.useState(false);
 
 
-
+  let current = new Date();
+  let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+  let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+  let dateTime = cDate + ' ' + cTime;
+  // console.log(dateTime);
   const handleOnSignUp = () => {
       if(email && password && firstName && lastName) {
         setSignUpLoading(true);
         const payload = {
+          Time : dateTime,
           Email : email,
           Password : password,
           FirstName : firstName,

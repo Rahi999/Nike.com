@@ -61,7 +61,7 @@ const style = {
 
   
   useEffect(() => {
-    axios.get(`http://localhost:8080/All_Data`).then((r) => {
+    axios.get(`https://intermediate-little-dibble.glitch.me/All_Data`).then((r) => {
       setApiData(r.data);
     }).catch(()=> null)
 
@@ -91,7 +91,7 @@ const style = {
          image : mci,
          color : mcc
       }
-      axios.post("http://localhost:8080/Men_Clothing",payload)
+      axios.post("https://intermediate-little-dibble.glitch.me/Men_Clothing",payload)
       .then((res) => {
         setLoading(false);
         handleCloseMenClothing();
@@ -116,7 +116,7 @@ const style = {
        image : mci,
        color : mcc
     }
-    axios.post("http://localhost:8080/Men_Shoes",payload)
+    axios.post("https://intermediate-little-dibble.glitch.me/Men_Shoes",payload)
     .then((res) => {
       setLoading(false);
       handleCloseSecond();
@@ -140,7 +140,7 @@ const style = {
        image : mci,
        color : mcc
     }
-    axios.post("http://localhost:8080/Women_Clothes",payload)
+    axios.post("https://intermediate-little-dibble.glitch.me/Women_Clothes",payload)
     .then((res) => {
       setLoading(false);
       handleCloseThird();
@@ -164,7 +164,7 @@ const style = {
        image : mci,
        color : mcc
     }
-    axios.post("http://localhost:8080/Women_shoes",payload)
+    axios.post("https://intermediate-little-dibble.glitch.me/Women_shoes",payload)
     .then((res) => {
       setLoading(false);
       handleCloseFourth();

@@ -9,6 +9,11 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import {useDispatch,useSelector} from "react-redux"
 import {addToCart} from "../Redux/AppReducer/action"
 import {useNavigate} from "react-router-dom"
+import IconButton from '@mui/material/IconButton';
+import Collapse from '@mui/material/Collapse';
+import Button from '@mui/material/Button';
+import CloseIcon from '@mui/icons-material/Close';
+import Alert from '@mui/material/Alert';
 
 const SearchProducts = () => {
   const params = useParams();
@@ -17,12 +22,14 @@ const SearchProducts = () => {
   const [error,setError] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [size,setSize] = useState("")
+  const [size,setSize] = useState("");
+  const [openWarning, setOpenWarning] = React.useState(false);
+  const [openLoginWarning, setOpenLoginWarning] = React.useState(false);
 
   console.log(params.id)
   useEffect(() => {
     setLoading(true)
-    axios.get(`http://localhost:8080/All_Data/${params.id}`)
+    axios.get(`https://intermediate-little-dibble.glitch.me/All_Data/${params.id}`)
     .then((res) => {
              setSingleMenClothesData(res.data);
              setLoading(false)
@@ -41,24 +48,29 @@ const SearchProducts = () => {
     color: '#ff3d47',
   },
 });
-
+const name = localStorage.getItem("First_Name");
   const handleCart = () => {
-    if(size) {
-      const payload = {
-        id : new Date(),
-        description : SingleMenClothesData.description,
-        title : SingleMenClothesData.title,
-        price : SingleMenClothesData.price,
-        image : SingleMenClothesData.image,
-        size : size
+    if(name) {
+      if(size) {
+        const payload = {
+          id : new Date(),
+          description : SingleMenClothesData.description,
+          title : SingleMenClothesData.title,
+          price : SingleMenClothesData.price,
+          image : SingleMenClothesData.image,
+          size : size
+        }
+        var cartItems =   JSON.parse(localStorage.getItem("CartData") || "[]");
+        cartItems.push(payload)
+        localStorage.setItem("CartData",JSON.stringify(cartItems))
+        navigate("/cart");
+      } else {
+        setOpenWarning(true)
       }
-      var cartItems =   JSON.parse(localStorage.getItem("CartData") || "[]");
-      cartItems.push(payload)
-      localStorage.setItem("CartData",JSON.stringify(cartItems))
-      navigate("/cart");
-    } else {
-      alert("Please Select Size")
+    }else {
+      setOpenLoginWarning(true)
     }
+   
     
   }
   return loading ? (<Box id="menClothingContainer"><img width="30%" style={{marginLeft:"30%"}} src="https://i.pinimg.com/originals/b4/4e/22/b44e229598a8bdb7f2f432f246fb0813.gif"  alt="Loading Logo"/></Box>)
@@ -110,6 +122,49 @@ const SearchProducts = () => {
         emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
       />
     </Box> <br /><br />
+    <Box sx={{ width: '100%',margin:"auto",fontSize:"22px" }}>
+      <Collapse in={openLoginWarning}>
+        <Alert severity="warning" variant="filled"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="medium"
+              onClick={() => {
+                setOpenLoginWarning(false);
+                navigate("/signUp")
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2,fontSize:"20px" }}
+        >
+          Looks Like You Haven't Logged In, Please Close to SignUp...
+        </Alert>
+      </Collapse>
+      </Box>
+    <Box sx={{ width: '100%',margin:"auto",fontSize:"22px" }}>
+      <Collapse in={openWarning}>
+        <Alert severity="warning" variant="filled"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="medium"
+              onClick={() => {
+                setOpenWarning(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2,fontSize:"20px" }}
+        >
+          Please Select The Sizes
+        </Alert>
+      </Collapse>
+      </Box>
           <button onClick={() => handleCart()} id="cartButton">Add to Bag</button>
           <br /><br />
           <Typography id="color">This product is excluded from site promotions and discounts.</Typography>

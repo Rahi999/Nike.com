@@ -31,13 +31,13 @@ const Cart = () => {
   setCart(data)
   },[])
 
-  console.log(cart);
+  // console.log(cart);
 
   let total = 0;
   if(cart) {
    total = cart.reduce(function (acc, obj) { return acc + +obj.price }, 0);
   }
-  console.log(total)
+  // console.log(total)
   const handleDelete = (id) => {
     setCart(cart.filter((item)=> item.id !== id));
     localStorage.setItem("CartData",JSON.stringify(cart))

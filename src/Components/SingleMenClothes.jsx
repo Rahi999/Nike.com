@@ -29,7 +29,7 @@ const SingleMenClothes = () => {
 
   useEffect(() => {
     setLoading(true)
-    axios.get(`http://localhost:8080/Men_Clothing/${params.id}`)
+    axios.get(`https://intermediate-little-dibble.glitch.me/Men_Clothing/${params.id}`)
     .then((res) => {
              setSingleMenClothesData(res.data);
              setLoading(false)

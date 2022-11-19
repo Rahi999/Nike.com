@@ -36,7 +36,7 @@ const SignUp = () => {
       if(email && password && firstName && lastName) {
         setSignUpLoading(true);
         const payload = {
-          Time : dateTime,
+          Date : dateTime,
           Email : email,
           Password : password,
           FirstName : firstName,

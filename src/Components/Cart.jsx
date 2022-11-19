@@ -60,7 +60,7 @@ const Cart = () => {
   let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
   let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
   let dateTime = cDate + ' ' + cTime;
-  console.log(dateTime);
+  // console.log(dateTime);
   const handleAdd = () => {
    
     // https://17ff65.sse.codesandbox.io/Nike_Products_OrderedBy_Customers
@@ -76,7 +76,8 @@ const Cart = () => {
       Name : name,
       Phone : phone,
       Address : address,
-      Pin : code
+      Pin : code,
+      Total : total
     }
     axios.post("https://intermediate-little-dibble.glitch.me/Nike_Products_OrderedBy_Customers",payload)
     .then((res) => {

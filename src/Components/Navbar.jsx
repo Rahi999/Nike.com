@@ -49,7 +49,6 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
   boxShadow: 24,
   p: 4,
 };
@@ -479,8 +478,8 @@ const style = {
               <Link to="/cart">Cart <span id="cartLength">{data ? data.length : "0"}</span></Link>
               <Link to="/cart">Wishlist</Link>
               <Link to="/">Home</Link>
-              <a href="#">Users List</a>
-              <a href="#">Admin</a>
+              <a href="https://csb-m77eqe.netlify.app/" target="_blank">Users List</a>
+              <a href="https://csb-9yqhy3.netlify.app/" target="_blank">Admin</a>
             </Box>
        </Box>
       </Box>

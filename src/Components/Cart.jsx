@@ -79,7 +79,7 @@ const Cart = () => {
       Pin : code,
       Total : total
     }
-    axios.post("https://intermediate-little-dibble.glitch.me/Nike_Products_OrderedBy_Customers",payload)
+    axios.post("http://localhost:8080/Nike_Products_OrderedBy_Customers",payload)
     .then((res) => {
       // alert("Order Confirmed");
       setOpenOrderSuccess(true)

@@ -7,7 +7,7 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer"
 function App() {
   return (
-    <Box  style={{width:"95%",margin:"auto"}}>
+    <Box  style={{width:"100%",margin:"auto"}}>
       <Navbar />
      <AllRoutes />
      <Footer />

@@ -61,7 +61,7 @@ const style = {
 
   
   useEffect(() => {
-    axios.get(`https://intermediate-little-dibble.glitch.me/All_Data`).then((r) => {
+    axios.get(`http://localhost:8080/All_Data`).then((r) => {
       setApiData(r.data);
     }).catch(()=> null)
 
@@ -91,7 +91,7 @@ const style = {
          image : mci,
          color : mcc
       }
-      axios.post("https://intermediate-little-dibble.glitch.me/Men_Clothing",payload)
+      axios.post("http://localhost:8080/Men_Clothing",payload)
       .then((res) => {
         setLoading(false);
         handleCloseMenClothing();
@@ -116,7 +116,7 @@ const style = {
        image : mci,
        color : mcc
     }
-    axios.post("https://intermediate-little-dibble.glitch.me/Men_Shoes",payload)
+    axios.post("http://localhost:8080/Men_Shoes",payload)
     .then((res) => {
       setLoading(false);
       handleCloseSecond();
@@ -140,7 +140,7 @@ const style = {
        image : mci,
        color : mcc
     }
-    axios.post("https://intermediate-little-dibble.glitch.me/Women_Clothes",payload)
+    axios.post("http://localhost:8080/Women_Clothes",payload)
     .then((res) => {
       setLoading(false);
       handleCloseThird();
@@ -164,7 +164,7 @@ const style = {
        image : mci,
        color : mcc
     }
-    axios.post("https://intermediate-little-dibble.glitch.me/Women_shoes",payload)
+    axios.post("http://localhost:8080/Women_shoes",payload)
     .then((res) => {
       setLoading(false);
       handleCloseFourth();
@@ -178,9 +178,19 @@ const style = {
     .catch((err) => setError(true))  
   }
   return ( <Box id="navbar">
-    <Box id="navabrContainer" columns={{sm:1,md:2,lg:2,xl:2,base:1}} >
+    <Box id="navabrContainer"
+     style={{
+      width:"100%",
+      background : "white",
+      zIndex:"9",
+      position:"fixed",
+      top:"0",
+      left:"0",
+      boxShadow:"2px 2px 8px rgba(0,0,0,0.2)"
+     }}
+    columns={{sm:1,md:2,lg:2,xl:2,base:1}} >
       <Box id="firstDiv" >
-        <img width='20%' src="https://media.designrush.com/inspiration_images/134805/conversions/_1512076803_93_Nike-preview.jpg" alt="Logo.." />
+        <img onClick={() => navigate("/")} style={{cursor:"pointer"}}  width='20%' src="https://media.designrush.com/inspiration_images/134805/conversions/_1512076803_93_Nike-preview.jpg" alt="Logo.." />
          {/* Men Category */}
         <Box class="dropdown">
           <Typography  class="dropbtn">Men</Typography>
@@ -428,7 +438,7 @@ const style = {
             </Box>
        </Box>
       </Box>
-  
+   
   {/* Second Div Of The Navbar Container */}
 
       <Box id="secondDiv" >
@@ -467,15 +477,17 @@ const style = {
         
 
         </Box>
+        <Box id="bagDiv" ><Avatar title="Bag " style={{cursor:"pointer",width:"60px",marginTop:"40%"}} onClick={() => navigate("/cart")} src="https://cdn.icon-icons.com/icons2/2582/PNG/512/shopping_bag_icon_153998.png" />
+        <span style={{marginTop:"35%",marginLeft:"-20%", backgroundColor:"black",color:"white",borderRadius:"50%",width:"25px",height:"25px",textAlign:"center"}}>{data ? data.length : "0"}</span>
+        </Box>
        
         {/* <Button style={{width:"10%",}}><img  width="100%" src="https://www.shareicon.net/data/256x256/2016/09/14/829028_package_512x512.png" alt="" /></Button> */}
          {/* Menu Category */}
-         <Box class="dropdown">
+         <Box class="dropdown" style={{marginRight:"80px"}}>
           <Typography class="dropbtn"><Avatar src="" /></Typography>
             <Box class="dropdown-content">
-              <Link to="/signUp">SignUp/{name ? name : "SignIn"} </Link>
+              <Link to="/signUp">{name ? name : "SignIn"} </Link>
               <Link to="/login">Login</Link>
-              <Link to="/cart">Cart <span id="cartLength">{data ? data.length : "0"}</span></Link>
               <Link to="/cart">Wishlist</Link>
               <Link to="/">Home</Link>
               <a href="https://csb-m77eqe.netlify.app/" target="_blank">Users List</a>

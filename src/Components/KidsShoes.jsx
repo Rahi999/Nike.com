@@ -44,14 +44,14 @@ const MenShoes = () => {
   };
   useEffect(() => {
      dispatch(menShoesLoadingFunction());
-     axios.get(`https://intermediate-little-dibble.glitch.me/kid_Shoes?_limit=${limit}&_page=${page}`,queryParams)
+     axios.get(`http://localhost:8080/kid_Shoes?_limit=${limit}&_page=${page}`,queryParams)
      .then((res) => dispatch(menShoesSuccessFunction(res.data)))
      .catch((err) => dispatch(menShoesFailureFunction()))
   },[limit,page,sort,text]);
 
   useEffect(() => {
     dispatch(menShoesLoadingFunction());
-    axios.get("https://intermediate-little-dibble.glitch.me/kid_Shoes")
+    axios.get("http://localhost:8080/kid_Shoes")
     .then((res)=> {
       setAllData(res.data)
        

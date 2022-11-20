@@ -37,14 +37,14 @@ const WomenClothing = () => {
   };
   useEffect(() => {
      dispatch(womenClothingLoadingFunction());
-     axios.get(`https://intermediate-little-dibble.glitch.me/Women_Clothes?_limit=${limit}&_page=${page}`,queryParams)
+     axios.get(`http://localhost:8080/Women_Clothes?_limit=${limit}&_page=${page}`,queryParams)
      .then((res) => dispatch(womenClothingSuccessFunction(res.data)))
      .catch((err) => dispatch(womenClothingFailureFunction()))
   },[limit,page,sort,text]);
 
   useEffect(() => {
     dispatch(womenClothingLoadingFunction());
-    axios.get("https://intermediate-little-dibble.glitch.me/Women_Clothes")
+    axios.get("http://localhost:8080/Women_Clothes")
     .then((res)=> {
       setAllData(res.data)
        

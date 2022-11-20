@@ -43,7 +43,7 @@ const SignUp = () => {
           LastName : lastName,
           status : false 
         }
-        axios.post("https://intermediate-little-dibble.glitch.me/NikeSignUp",payload)
+        axios.post("http://localhost:8080/NikeSignUp",payload)
         .then((resolve) => {
           setSignUpLoading(false);
           setSignUpSuccess(true);

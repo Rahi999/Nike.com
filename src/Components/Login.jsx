@@ -29,7 +29,7 @@ const Login = () => {
 
   useEffect(() => {
     setDataLoading(true)
-   axios.get("https://intermediate-little-dibble.glitch.me/NikeSignUp")
+   axios.get("http://localhost:8080/NikeSignUp")
    .then((res) => {
     setLoginData(res.data)
     setDataLoading(false)

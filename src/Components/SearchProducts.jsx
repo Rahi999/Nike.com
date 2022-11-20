@@ -29,7 +29,7 @@ const SearchProducts = () => {
   console.log(params.id)
   useEffect(() => {
     setLoading(true)
-    axios.get(`https://intermediate-little-dibble.glitch.me/All_Data/${params.id}`)
+    axios.get(`http://localhost:8080/All_Data/${params.id}`)
     .then((res) => {
              setSingleMenClothesData(res.data);
              setLoading(false)

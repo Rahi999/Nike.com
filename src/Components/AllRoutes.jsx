@@ -23,7 +23,7 @@ import Receipt from './Receipt';
 const AllRoutes = () => {
   const name = localStorage.getItem("Name");
   return (
-    <Box>
+    <Box id="allRoutes" >
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/signUp" element={<SignUp />} />

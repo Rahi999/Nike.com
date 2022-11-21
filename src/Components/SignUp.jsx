@@ -122,7 +122,7 @@ const SignUp = () => {
               <CloseIcon fontSize="inherit" />
             </IconButton>
           }
-          sx={{ mb: 2,fontSize:"22px" }}
+          sx={{ mb: 2,fontSize:"20px" }}
         >
           Please Enter All Details
         </Alert>

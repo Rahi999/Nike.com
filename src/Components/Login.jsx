@@ -46,19 +46,22 @@ const Login = () => {
       for(let i=0;i<loginData.length;i++) {
         
         if(email === loginData[i].Email && password === loginData[i].Password){
+          setOpenError(false);
           setLoginSuccess(true);
           setLoginStatus(false);
-          // alert("You're Successfully Logged In. Start Shopping ")
-          setOpenSuccess(true)
-          // console.log(loginData[i].Email,email,loginData[i].Password,password)
+          setOpenSuccess(true);
+          setTimeout(() => {
+            navigate("/")
+         },3000)
+        }
+        else {
+          setLoginError(true);
+          setLoginStatus(false);
+          setOpenError(true)
         } 
       }
-      setLoginError(true);
-      setLoginStatus(false);
-      setOpenError(true);
-      setTimeout(() => {
-         navigate("/")
-      },3000)
+      
+      
     } else {
       setLoginWarning(true);
       setOpenWarning(true)

@@ -49,7 +49,7 @@ const Cart = () => {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 300,
+    width: 400,
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
@@ -184,7 +184,7 @@ const Cart = () => {
          {/* Modal Goes Here */}
 
          <Box>
-      <Button disabled={cart ? cart.length === 0 : null} id="cartButton" onClick={handleOpen}>Confirm Order</Button>
+      <Button disabled={!cart } id="cartButton" onClick={handleOpen}>Confirm Order</Button>
       <Modal
         keepMounted
         open={open}

@@ -1,5 +1,5 @@
 <h3><a href="https://clone-nike.netlify.app/" target="_blank">Go Live</a></h3>
-<h3>Project Description</h3>
+<h3>Clone of Nike.com: A Mern E-Commerce Application. Completed this project individually, Allowing users to shop for clothing & shoes for Men, Women & kids. Responsive for Smartphones and big screens. Users can start shopping after Signing in or logging in with the Application. All types of Products may be found Including clothing & shoes for men, women, and kids. It also allows users to sell products, in the sell category they can post their products and users will be able to shop now in the same category. </h3>
 <hr />
 <h3>Tech Stacks :</h3>
 <ul>
@@ -25,7 +25,6 @@
   <li>Glitch Server .</li>
   
 </ul>
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) @3.1.1 .
 <h3>Contributor : </h3>
 <ul>
   <li>Rahim Ansari(Individual) .</li>
@@ -52,30 +51,34 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   <li>Footer .</li>
 </ul>
 <hr />
-
 <h3>Some Screenshots from Website : </h3>
+<img src="https://user-images.githubusercontent.com/101566073/202985100-a2b0b7c1-59a0-416e-bee4-ef0f7bbb2b3f.png" />
 
-  
+![Screenshot 2022-11-21 at 12 15 35](https://user-images.githubusercontent.com/101566073/202984507-43965b18-988e-4788-a404-33a36c573afd.png)
 
-![Screenshot 2022-11-19 at 18 08 30](https://user-images.githubusercontent.com/101566073/202851817-e974bbb3-4546-4753-85fa-fff2594ca89b.png)
-![Screenshot 2022-11-19 at 18 08 39](https://user-images.githubusercontent.com/101566073/202851820-8ae3ac35-28ad-4164-988a-3e5d38d8df36.png)
-![Screenshot 2022-11-19 at 18 08 51](https://user-images.githubusercontent.com/101566073/202851821-abb13f2e-aed7-4909-b7b7-185f46aedbfe.png)
-![Screenshot 2022-11-19 at 18 09 32](https://user-images.githubusercontent.com/101566073/202851828-a33b6b6e-aa06-4cad-9317-3a14275a64e7.png)
-![Screenshot 2022-11-19 at 18 09 49](https://user-images.githubusercontent.com/101566073/202851830-1a6c0fb5-5027-4cc6-94b9-1fb85a374c44.png)
-![Screenshot 2022-11-19 at 18 10 25](https://user-images.githubusercontent.com/101566073/202851834-167bc2b9-860e-4ed2-8fe5-90d5b4c21dca.png)
-![Screenshot 2022-11-19 at 18 10 38](https://user-images.githubusercontent.com/101566073/202851835-91875dc0-d736-45be-afee-0a56e2e2ac8b.png)
-![Screenshot 2022-11-19 at 18 10 48](https://user-images.githubusercontent.com/101566073/202851836-67486c35-0fd4-408f-9e40-d2f7811f93f6.png)
-![Screenshot 2022-11-19 at 18 11 14](https://user-images.githubusercontent.com/101566073/202851838-b1fe798b-4bba-4b02-9ab1-429cbc79dbc3.png)
-![Screenshot 2022-11-19 at 18 11 33](https://user-images.githubusercontent.com/101566073/202851839-137ccff6-9048-4fbe-95ba-2ce10a8c2dd5.png)
-![Screenshot 2022-11-19 at 18 12 21](https://user-images.githubusercontent.com/101566073/202851840-6cbace8c-42aa-4d42-a7a7-e4bf9d499540.png)
-![Screenshot 2022-11-19 at 18 12 56](https://user-images.githubusercontent.com/101566073/202851842-5a3749c3-1808-4738-bcda-0660e9ee3d57.png)
-![Screenshot 2022-11-19 at 18 13 08](https://user-images.githubusercontent.com/101566073/202851845-80e76233-424c-4dfb-a2d8-af3b4f316adf.png)
-![Screenshot 2022-11-19 at 18 13 20](https://user-images.githubusercontent.com/101566073/202851846-071c87b1-4dba-4d1d-be8e-f8dd4567c488.png)
-![Screenshot 2022-11-19 at 18 13 27](https://user-images.githubusercontent.com/101566073/202851847-cb1bf6d6-1e78-4eda-b795-502d420c338e.png)
-![Screenshot 2022-11-19 at 18 13 38](https://user-images.githubusercontent.com/101566073/202851848-09375d2b-f68b-47ad-b771-09c32f41cdf3.png)
-![Screenshot 2022-11-19 at 18 13 51](https://user-images.githubusercontent.com/101566073/202851850-b07ffc92-ea25-4b24-a296-75d863299942.png)
-![Screenshot 2022-11-19 at 18 14 02](https://user-images.githubusercontent.com/101566073/202851851-bdfee6fc-837e-4075-b88e-434bebdcb016.png)
-![Screenshot 2022-11-19 at 18 14 12](https://user-images.githubusercontent.com/101566073/202851852-e40e91a3-5839-4b23-9065-f92f76775a21.png)
-![Screenshot 2022-11-19 at 18 14 27](https://user-images.githubusercontent.com/101566073/202851854-ceedcce3-2387-4c86-82f4-5e0b0e3743da.png)
+![Screenshot 2022-11-21 at 12 16 12](https://user-images.githubusercontent.com/101566073/202984535-6bc2fd38-a17d-48c3-93c0-e406cc06ad8b.png)
+
+![Screenshot 2022-11-21 at 12 10 58](https://user-images.githubusercontent.com/101566073/202984576-d5946a3f-2cc1-4071-8a81-505baa37f89d.png)
+
+![Screenshot 2022-11-21 at 12 11 09](https://user-images.githubusercontent.com/101566073/202984589-bb092df2-bc2c-4a5e-b76a-32f805fc4572.png)
+
+![Screenshot 2022-11-21 at 12 11 47](https://user-images.githubusercontent.com/101566073/202984634-0273236f-edcf-4be4-a9e4-da3dfe097fdd.png)
+
+![Screenshot 2022-11-21 at 12 12 45](https://user-images.githubusercontent.com/101566073/202984700-5d19eaae-5e64-4662-81ad-c6f075e4426d.png)
+
+![Screenshot 2022-11-21 at 12 12 51](https://user-images.githubusercontent.com/101566073/202984746-6525bd25-5940-4893-a5f1-16435b5db2d5.png)
+
+
+![Screenshot 2022-11-21 at 12 14 25](https://user-images.githubusercontent.com/101566073/202984852-060c5233-d3b4-4f71-84a5-effa1af6a081.png)
+![Screenshot 2022-11-21 at 12 14 34](https://user-images.githubusercontent.com/101566073/202984869-e64f21c4-dee8-4231-8f11-13291c6c8d7f.png)
+![Screenshot 2022-11-21 at 12 14 39](https://user-images.githubusercontent.com/101566073/202984876-55a9a685-5a60-439e-80a0-b9aa1a71440c.png)
+![Screenshot 2022-11-21 at 12 14 57](https://user-images.githubusercontent.com/101566073/202984882-85efdafa-db7d-4410-89ea-4de9697a4097.png)
+![Screenshot 2022-11-21 at 12 15 11](https://user-images.githubusercontent.com/101566073/202984888-43e23706-e11c-4696-8dad-9bac1187b460.png)
+![Screenshot 2022-11-21 at 12 15 19](https://user-images.githubusercontent.com/101566073/202984898-eafc9e18-d373-4875-bf31-79ab4744edfd.png)
+![Screenshot 2022-11-21 at 12 13 34](https://user-images.githubusercontent.com/101566073/202984899-63cf5e4d-b3dd-4bb1-a771-aaa1010bde2c.png)
+![Screenshot 2022-11-21 at 12 13 53](https://user-images.githubusercontent.com/101566073/202984904-9f934f62-feff-4b7a-a80d-ce57b0eeb0b7.png)
+
+
+
 
 <h1 align="center">THANK YOU</h1>

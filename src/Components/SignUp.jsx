@@ -25,6 +25,7 @@ const SignUp = () => {
   const [signUpLoading,setSignUpLoading] = useState(false);
   const [signUpFailure,setSignUpFailure] = useState(false)
   const [openSuccess, setOpenSuccess] = React.useState(false);
+  const [success,setSuccess] = React.useState(false);
 
 
   let current = new Date();
@@ -43,12 +44,12 @@ const SignUp = () => {
           LastName : lastName,
           status : false 
         }
-        axios.post("http://localhost:8080/NikeSignUp",payload)
+        axios.post("https://intermediate-little-dibble.glitch.me/NikeSignUp",payload)
         .then((resolve) => {
           setSignUpLoading(false);
           setSignUpSuccess(true);
           localStorage.setItem("First_Name",firstName);
-          navigate("/login")
+          setSuccess(true)
         })
         .catch((reject) => {
            setSignUpFailure(true);
@@ -125,6 +126,31 @@ const SignUp = () => {
           sx={{ mb: 2,fontSize:"20px" }}
         >
           Please Enter All Details
+        </Alert>
+      </Collapse>
+      
+    </Box>
+
+    {/* Success Message */}
+    <Box sx={{ width: '60%',margin:"auto",fontSize:"22px" }}>
+      <Collapse in={success}>
+        <Alert severity="success" variant="filled"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="medium"
+              onClick={() => {
+                setSuccess(false);
+                navigate("/menShoes")
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2,fontSize:"20px" }}
+        >
+          Account Created Successfully, Close to Continue Shopping...
         </Alert>
       </Collapse>
       

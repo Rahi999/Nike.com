@@ -29,7 +29,7 @@ const Login = () => {
 
   useEffect(() => {
     setDataLoading(true)
-   axios.get("http://localhost:8080/NikeSignUp")
+   axios.get("https://intermediate-little-dibble.glitch.me/NikeSignUp")
    .then((res) => {
     setLoginData(res.data)
     setDataLoading(false)
@@ -50,6 +50,7 @@ const Login = () => {
           setLoginSuccess(true);
           setLoginStatus(false);
           setOpenSuccess(true);
+          localStorage.setItem("First_Name",email)
           setTimeout(() => {
             navigate("/")
          },3000)
@@ -76,7 +77,7 @@ const Login = () => {
                    width="20%" /></Box>
               <Box>
                 <Typography style={{fontWeight:"bold"}} id="h3">YOUR ACCOUNT FOR EVERYTHING NIKE</Typography>
-                <Typography style={{color:"grey",fontSize:"20px"}} id="h3">Please Login With Same Details</Typography>
+                <Typography style={{color:"grey",fontSize:"20px"}} id="h3">Please Login With Your SignUp Details</Typography>
               </Box>
               <br /><br />
               <Box>

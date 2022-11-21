@@ -25,11 +25,12 @@ const SingleMenClothes = () => {
   const [size,setSize] = useState("");
   const [openWarning, setOpenWarning] = React.useState(false);
   const [openLoginWarning, setOpenLoginWarning] = React.useState(false);
+  const [openCartSuccess,setOpenCartSuccess] = React.useState(false)
 
 
   useEffect(() => {
     setLoading(true)
-    axios.get(`http://localhost:8080/Men_Clothing/${params.id}`)
+    axios.get(`https://intermediate-little-dibble.glitch.me/Men_Clothing/${params.id}`)
     .then((res) => {
              setSingleMenClothesData(res.data);
              setLoading(false)
@@ -64,7 +65,7 @@ const name = localStorage.getItem("First_Name");
         var cartItems =   JSON.parse(localStorage.getItem("CartData") || "[]");
         cartItems.push(payload)
         localStorage.setItem("CartData",JSON.stringify(cartItems))
-        navigate("/cart");
+        setOpenCartSuccess(true)
       } else {
         setOpenWarning(true)
       }
@@ -80,6 +81,7 @@ const name = localStorage.getItem("First_Name");
   : error ? (<Box id="menClothingContainer"><img width="35%" style={{marginLeft:"30%"}} src="https://gifimage.net/wp-content/uploads/2018/11/something-went-wrong-gif-2.gif" alt="Error Logo" /></Box>)
   : (
     <Box id="singleProductContainer">
+    
       <Box id="SingleParent">
         {/* Image Box */}
         <Box id="singleChild">
@@ -87,6 +89,28 @@ const name = localStorage.getItem("First_Name");
         </Box>
         {/* Details Box */}
         <Box id="singleChild2">
+        <Box sx={{ width: '100%',margin:"auto",fontSize:"22px" }}>
+      <Collapse in={openCartSuccess}>
+        <Alert severity="success" variant="filled"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="medium"
+              onClick={() => {
+                setOpenCartSuccess(false);
+                navigate("/cart")
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2,fontSize:"20px" }}
+        >
+         Product Added In Your Bag, Close to Move to Bag...
+        </Alert>
+      </Collapse>
+      </Box>
           <Typography id="description">{SingleMenClothesData.description}</Typography>
           <Typography id="title1" >{SingleMenClothesData.title}</Typography>
           <Typography id="color">{SingleMenClothesData.color}</Typography>
@@ -135,7 +159,7 @@ const name = localStorage.getItem("First_Name");
               size="medium"
               onClick={() => {
                 setOpenLoginWarning(false);
-                navigate("/signUp")
+                navigate("/login")
               }}
             >
               <CloseIcon fontSize="inherit" />

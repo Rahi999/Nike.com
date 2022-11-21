@@ -27,12 +27,12 @@ const Navbar = () => {
   const handleOpenFourth = () => setOpenFourth(true);
   const handleCloseFourth = () => setOpenFourth(false);
 
-  const [mcd,setMcd] = useState('');
-  const [mct,setMct] = useState('');
-  const [mci,setMci] = useState('');
-  const [mcc,setMcc] = useState('');
-  const [mcp,setMcp] = useState('');
-  const [mcs,setMcs] = useState('');
+  const [ProductDescription,setProductDescription] = useState('');
+  const [ProductTitle,setProductTitle] = useState('');
+  const [ProductImage,setProductImage] = useState('');
+  const [ProductColors,setProductColors] = useState('');
+  const [ProductPrice,setProductPrice] = useState('');
+  const [ProductSeller,setProductSeller] = useState('');
   const [loading,setLoading] = useState(false);
   const [error,setError] = useState(false)
  
@@ -61,7 +61,7 @@ const style = {
 
   
   useEffect(() => {
-    axios.get(`http://localhost:8080/All_Data`).then((r) => {
+    axios.get(`https://intermediate-little-dibble.glitch.me/All_Data`).then((r) => {
       setApiData(r.data);
     }).catch(()=> null)
 
@@ -84,23 +84,23 @@ const style = {
   const handleAddMenClothes = () => {
           setLoading(true)
       const payload = {
-         sellerName : mcs,
-         description : mcd,
-         title : mct,
-         price : mcp,
-         image : mci,
-         color : mcc
+         sellerName : ProductSeller,
+         description : ProductDescription,
+         title : ProductTitle,
+         price : ProductPrice,
+         image : ProductImage,
+         color : ProductColors
       }
-      axios.post("http://localhost:8080/Men_Clothing",payload)
+      axios.post("https://intermediate-little-dibble.glitch.me/Men_Clothing",payload)
       .then((res) => {
         setLoading(false);
         handleCloseMenClothing();
-        setMcs('');
-        setMcd('');
-        setMct('');
-        setMcp('');
-        setMci('');
-        setMcc('');
+        setProductSeller('');
+        ProductDescription('');
+        setProductTitle('');
+        setProductPrice('');
+        setProductImage('');
+        setProductColors('');
       })
       .catch((err) => setError(true))  
       
@@ -109,23 +109,23 @@ const style = {
   const handleAddMenShoes = () => {
     setLoading(true)
     const payload = {
-       sellerName : mcs,
-       description : mcd,
-       title : mct,
-       price : mcp,
-       image : mci,
-       color : mcc
+       sellerName : ProductSeller,
+       description : ProductDescription,
+       title : ProductTitle,
+       price : ProductPrice,
+       image : ProductImage,
+       color : ProductColors
     }
-    axios.post("http://localhost:8080/Men_Shoes",payload)
+    axios.post("https://intermediate-little-dibble.glitch.me/Men_Shoes",payload)
     .then((res) => {
       setLoading(false);
       handleCloseSecond();
-      setMcs('');
-      setMcd('');
-      setMct('');
-      setMcp('');
-      setMci('');
-      setMcc('');
+      setProductSeller('');
+      ProductDescription('');
+      setProductTitle('');
+      setProductPrice('');
+      setProductImage('');
+      setProductColors('');
     })
     .catch((err) => setError(true))  
   }
@@ -133,23 +133,23 @@ const style = {
   const handleAddWomenClothes = () => {
     setLoading(false)
     const payload = {
-       sellerName : mcs,
-       description : mcd,
-       title : mct,
-       price : mcp,
-       image : mci,
-       color : mcc
+       sellerName : ProductSeller,
+       description : ProductDescription,
+       title : ProductTitle,
+       price : ProductPrice,
+       image : ProductImage,
+       color : ProductColors
     }
-    axios.post("http://localhost:8080/Women_Clothes",payload)
+    axios.post("https://intermediate-little-dibble.glitch.me/Women_Clothes",payload)
     .then((res) => {
       setLoading(false);
       handleCloseThird();
-      setMcs('');
-      setMcd('');
-      setMct('');
-      setMcp('');
-      setMci('');
-      setMcc('');
+      setProductSeller('');
+      ProductDescription('');
+      setProductTitle('');
+      setProductPrice('');
+      setProductImage('');
+      setProductColors('');
     })
     .catch((err) => setError(true))  
   }
@@ -157,25 +157,30 @@ const style = {
   const handleAddWomenShoes = () => {
     setLoading(true)
     const payload = {
-       sellerName : mcs,
-       description : mcd,
-       title : mct,
-       price : mcp,
-       image : mci,
-       color : mcc
+       sellerName : ProductSeller,
+       description : ProductDescription,
+       title : ProductTitle,
+       price : ProductPrice,
+       image : ProductImage,
+       color : ProductColors
     }
-    axios.post("http://localhost:8080/Women_shoes",payload)
+    axios.post("https://intermediate-little-dibble.glitch.me/Women_shoes",payload)
     .then((res) => {
       setLoading(false);
       handleCloseFourth();
-      setMcs('');
-      setMcd('');
-      setMct('');
-      setMcp('');
-      setMci('');
-      setMcc('');
+      setProductSeller('');
+      ProductDescription('');
+      setProductTitle('');
+      setProductPrice('');
+      setProductImage('');
+      setProductColors('');
     })
     .catch((err) => setError(true))  
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem("First_Name");
+    navigate("/");
   }
   return ( <Box id="navbar">
     <Box id="navabrContainer"
@@ -190,7 +195,7 @@ const style = {
      }}
     columns={{sm:1,md:2,lg:2,xl:2,base:1}} >
       <Box id="firstDiv" >
-        <img onClick={() => navigate("/")} style={{cursor:"pointer"}}  width='20%' src="https://media.designrush.com/inspiration_images/134805/conversions/_1512076803_93_Nike-preview.jpg" alt="Logo.." />
+        <img title="Home" onClick={() => navigate("/")} style={{cursor:"pointer"}}  width='20%' src="https://media.designrush.com/inspiration_images/134805/conversions/_1512076803_93_Nike-preview.jpg" alt="Logo.." />
          {/* Men Category */}
         <Box class="dropdown">
           <Typography  class="dropbtn">Men</Typography>
@@ -249,27 +254,27 @@ const style = {
             </Typography>
             <br />
            <Typography>Seller's Name</Typography>
-           <Input id="signUpInput" onChange={(e) => setMcs(e.target.value)} placeholder="Seller's Name" />
+           <Input id="signUpInput" onChange={(e) => setProductSeller(e.target.value)} placeholder="Seller's Name" />
             <br />
             <br />
             <Typography>Product Name/Titel</Typography>
-            <Input id="signUpInput" onChange={(e) => setMct(e.target.value)} placeholder="Product Title.." />
+            <Input id="signUpInput" onChange={(e) => setProductTitle(e.target.value)} placeholder="Product Title.." />
             <br />
             <br />
             <Typography>Product's Description</Typography>
-            <Input id="signUpInput" onChange={(e) => setMcd(e.target.value)} placeholder="Product Description..." />
+            <Input id="signUpInput" onChange={(e) => ProductDescription(e.target.value)} placeholder="Product Description..." />
             <br />
             <br />
             <Typography>Product Price</Typography>
-            <Input id="signUpInput" onChange={(e) => setMcp(e.target.value)} placeholder="Price..." />
+            <Input id="signUpInput" onChange={(e) => setProductPrice(e.target.value)} placeholder="Price..." />
             <br />
             <br />
             <Typography>Product Image URL</Typography>
-            <Input id="signUpInput" onChange={(e) => setMci(e.target.value)} placeholder="Image URL..." />
+            <Input id="signUpInput" onChange={(e) => setProductImage(e.target.value)} placeholder="Image URL..." />
             <br />
             <br />
             <Typography>Product Colors</Typography>
-            <Input id="signUpInput" onChange={(e) => setMcc(e.target.value)} placeholder="Colors..." />
+            <Input id="signUpInput" onChange={(e) => setProductColors(e.target.value)} placeholder="Colors..." />
             <br />
             <br />
             <button onClick={() => handleAddMenClothes()} id="signupButton">{loading ? "Adding Product..." : error ? "Failed" : "Add Product"}</button>
@@ -300,27 +305,27 @@ const style = {
             </Typography>
             <br />
            <Typography>Seller's Name</Typography>
-           <Input id="signUpInput" onChange={(e) => setMcs(e.target.value)} placeholder="Seller's Name" />
+           <Input id="signUpInput" onChange={(e) => setProductSeller(e.target.value)} placeholder="Seller's Name" />
             <br />
             <br />
             <Typography>Product Name/Titel</Typography>
-            <Input id="signUpInput" onChange={(e) => setMct(e.target.value)} placeholder="Product Title.." />
+            <Input id="signUpInput" onChange={(e) => setProductTitle(e.target.value)} placeholder="Product Title.." />
             <br />
             <br />
             <Typography>Product's Description</Typography>
-            <Input id="signUpInput" onChange={(e) => setMcd(e.target.value)} placeholder="Product Description..." />
+            <Input id="signUpInput" onChange={(e) => ProductDescription(e.target.value)} placeholder="Product Description..." />
             <br />
             <br />
             <Typography>Product Price</Typography>
-            <Input id="signUpInput" onChange={(e) => setMcp(e.target.value)} placeholder="Price..." />
+            <Input id="signUpInput" onChange={(e) => setProductPrice(e.target.value)} placeholder="Price..." />
             <br />
             <br />
             <Typography>Product Image URL</Typography>
-            <Input id="signUpInput" onChange={(e) => setMci(e.target.value)} placeholder="Image URL..." />
+            <Input id="signUpInput" onChange={(e) => setProductImage(e.target.value)} placeholder="Image URL..." />
             <br />
             <br />
             <Typography>Product Colors</Typography>
-            <Input id="signUpInput" onChange={(e) => setMcc(e.target.value)} placeholder="Colors..." />
+            <Input id="signUpInput" onChange={(e) => setProductColors(e.target.value)} placeholder="Colors..." />
             <br />
             <br />
             <button onClick={() => handleAddMenShoes()} id="signupButton">{loading ? "Adding Product..." : error ? "Failed" : "Add Product"}</button>
@@ -352,27 +357,27 @@ const style = {
             </Typography>
             <br />
            <Typography>Seller's Name</Typography>
-           <Input id="signUpInput" onChange={(e) => setMcs(e.target.value)} placeholder="Seller's Name" />
+           <Input id="signUpInput" onChange={(e) => setProductSeller(e.target.value)} placeholder="Seller's Name" />
             <br />
             <br />
             <Typography>Product Name/Titel</Typography>
-            <Input id="signUpInput" onChange={(e) => setMct(e.target.value)} placeholder="Product Title.." />
+            <Input id="signUpInput" onChange={(e) => setProductTitle(e.target.value)} placeholder="Product Title.." />
             <br />
             <br />
             <Typography>Product's Description</Typography>
-            <Input id="signUpInput" onChange={(e) => setMcd(e.target.value)} placeholder="Product Description..." />
+            <Input id="signUpInput" onChange={(e) => ProductDescription(e.target.value)} placeholder="Product Description..." />
             <br />
             <br />
             <Typography>Product Price</Typography>
-            <Input id="signUpInput" onChange={(e) => setMcp(e.target.value)} placeholder="Price..." />
+            <Input id="signUpInput" onChange={(e) => setProductPrice(e.target.value)} placeholder="Price..." />
             <br />
             <br />
             <Typography>Product Image URL</Typography>
-            <Input id="signUpInput" onChange={(e) => setMci(e.target.value)} placeholder="Image URL..." />
+            <Input id="signUpInput" onChange={(e) => setProductImage(e.target.value)} placeholder="Image URL..." />
             <br />
             <br />
             <Typography>Product Colors</Typography>
-            <Input id="signUpInput" onChange={(e) => setMcc(e.target.value)} placeholder="Colors..." />
+            <Input id="signUpInput" onChange={(e) => setProductColors(e.target.value)} placeholder="Colors..." />
             <br />
             <br />
             <button onClick={() => handleAddWomenClothes()} id="signupButton">{loading ? "Adding Product..." : error ? "Failed" : "Add Product"}</button>
@@ -403,27 +408,27 @@ const style = {
             </Typography>
             <br />
            <Typography>Seller's Name</Typography>
-           <Input id="signUpInput" onChange={(e) => setMcs(e.target.value)} placeholder="Seller's Name" />
+           <Input id="signUpInput" onChange={(e) => setProductSeller(e.target.value)} placeholder="Seller's Name" />
             <br />
             <br />
             <Typography>Product Name/Titel</Typography>
-            <Input id="signUpInput" onChange={(e) => setMct(e.target.value)} placeholder="Product Title.." />
+            <Input id="signUpInput" onChange={(e) => setProductTitle(e.target.value)} placeholder="Product Title.." />
             <br />
             <br />
             <Typography>Product's Description</Typography>
-            <Input id="signUpInput" onChange={(e) => setMcd(e.target.value)} placeholder="Product Description..." />
+            <Input id="signUpInput" onChange={(e) => ProductDescription(e.target.value)} placeholder="Product Description..." />
             <br />
             <br />
             <Typography>Product Price</Typography>
-            <Input id="signUpInput" onChange={(e) => setMcp(e.target.value)} placeholder="Price..." />
+            <Input id="signUpInput" onChange={(e) => setProductPrice(e.target.value)} placeholder="Price..." />
             <br />
             <br />
             <Typography>Product Image URL</Typography>
-            <Input id="signUpInput" onChange={(e) => setMci(e.target.value)} placeholder="Image URL..." />
+            <Input id="signUpInput" onChange={(e) => setProductImage(e.target.value)} placeholder="Image URL..." />
             <br />
             <br />
             <Typography>Product Colors</Typography>
-            <Input id="signUpInput" onChange={(e) => setMcc(e.target.value)} placeholder="Colors..." />
+            <Input id="signUpInput" onChange={(e) => setProductColors(e.target.value)} placeholder="Colors..." />
             <br />
             <br />
             <button onClick={() => handleAddWomenShoes()} id="signupButton">{loading ? "Adding Product..." : error ? "Failed" : "Add Product"}</button>
@@ -492,6 +497,7 @@ const style = {
               <Link to="/">Home</Link>
               <a href="https://csb-m77eqe.netlify.app/" target="_blank">Users List</a>
               <a href="https://csb-9yqhy3.netlify.app/" target="_blank">Admin</a>
+               <Link onClick={() => handleLogout()}>Logout</Link>
             </Box>
        </Box>
       </Box>

@@ -24,7 +24,7 @@ const Cart = () => {
   const navigate = useNavigate()
   const [openSuccess, setOpenSuccess] = React.useState(false);
   const [openOrderSuccess, setOpenOrderSuccess] = React.useState(false);
-
+  const [deleteItem,setDeleteItem] = React.useState(false);
 
   const data = JSON.parse(localStorage.getItem("CartData"));
   useEffect(() =>{
@@ -40,7 +40,8 @@ const Cart = () => {
   // console.log(total)
   const handleDelete = (id) => {
     setCart(cart.filter((item)=> item.id !== id));
-    localStorage.setItem("CartData",JSON.stringify(cart))
+    localStorage.setItem("CartData",JSON.stringify(cart));
+    setDeleteItem(true)
   //  console.log(cart)
   }
 
@@ -79,7 +80,7 @@ const Cart = () => {
       Pin : code,
       Total : total
     }
-    axios.post("http://localhost:8080/Nike_Products_OrderedBy_Customers",payload)
+    axios.post("https://intermediate-little-dibble.glitch.me/Nike_Products_OrderedBy_Customers",payload)
     .then((res) => {
       // alert("Order Confirmed");
       setOpenOrderSuccess(true)
@@ -123,6 +124,28 @@ const Cart = () => {
           sx={{ mb: 2,fontSize:"20px" }}
         >
           Your Order Have Been Confirmed, Close to See the Receipt...
+        </Alert>
+      </Collapse>
+      
+    </Box>
+    <Box sx={{ width: '60%',margin:"auto",fontSize:"22px" }}>
+      <Collapse in={deleteItem}>
+        <Alert severity="success" variant="filled"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="medium"
+              onClick={() => {
+                setDeleteItem(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2,fontSize:"20px" }}
+        >
+          Removed 1 Item From Your Bag.
         </Alert>
       </Collapse>
       
@@ -194,13 +217,13 @@ const Cart = () => {
       >
         <Box sx={style}>
           <Typography id="h3" style={{textAlign:"left"}}>Shipping Details</Typography><br />
-          <Typography>Please Enter Full Name</Typography> 
+          <Typography>  Full Name</Typography> 
           <Input onChange={(e) => setName(e.target.value)} id="signUpInput" placeholder='Enter Your Full Name'/> <br /><br />
-          <Typography>Please Enter Phone Number</Typography> 
+          <Typography>  Phone Number</Typography> 
           <Input onChange={(e) => setPhone(e.target.value)} id="signUpInput" placeholder='Phone Number' type="number"/> <br /> <br />
-          <Typography>Please Provide Full Address</Typography> 
+          <Typography>  Full Address</Typography> 
           <Input onChange={(e) => setAddress(e.target.value)} id="signUpInput" placeholder='Address'/> <br /> <br />
-          <Typography>Please Enter Pin/Zip Code</Typography> 
+          <Typography>  Pin/Zip Code</Typography> 
           <Input onChange={(e) => setCode(e.target.value)} id="signUpInput" placeholder='Pin/Zip Code' type="number"/> <br /> <br />
           <Box sx={{ width: '100%',margin:"auto",fontSize:"22px" }}>
       <Collapse in={openSuccess}>
@@ -233,6 +256,7 @@ const Cart = () => {
     <br />
         </Box>
       </Box>
+     
     </Box>
   )
 }

@@ -38,6 +38,9 @@ const Home = () => {
     </div>
   </div>
   </div>
+  <Link to="/menShoes">
+          <img  id='kidsImage' src="https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/w_981,c_limit/80fd8e85-5db5-4231-bbe7-f17dc933b797/nike-just-do-it.jpg" alt="Kids"/>
+        </Link>
   <Box style={{
           padding: "5%",
           textAlign:"Center"
@@ -60,9 +63,7 @@ const Home = () => {
           </Box>
         </Box>
         <br />
-        <Link to="/menShoes">
-          <img id='kidsImage' src="https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/w_981,c_limit/80fd8e85-5db5-4231-bbe7-f17dc933b797/nike-just-do-it.jpg" alt="Kids"/>
-        </Link>
+        
         
 
         
